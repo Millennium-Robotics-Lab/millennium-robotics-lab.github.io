@@ -37,12 +37,13 @@ nav a { padding: 12px 10px; font-size: 12px; text-decoration: none; color: #e1f0
 nav a:hover, nav a[aria-current] { color: var(--cyan); }
 .skip { position: fixed; left: 16px; top: -100px; z-index: 5; padding: 14px; background: var(--panel); }
 .skip:focus { top: 16px; }
-.hotspot { position: absolute; min-width: 44px; min-height: 44px; border: 1px solid transparent; border-radius: 10px; text-decoration: none; transition: border-color .12s, background .12s; }
+.hotspot { position: absolute; min-width: 44px; min-height: 44px; border: 0; text-decoration: none; }
 .hotspot::after { content: ""; position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; transform: translate(-50%, -50%); border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 4px #07132180, 0 1px 8px #071321; }
-.hotspot:hover, .hotspot:focus-visible { background: transparent; border-color: #78d9eb99; }
+.hotspot:hover, .hotspot:focus-visible { background: transparent; outline: none; }
 .hotspot:hover::after, .hotspot:focus-visible::after { box-shadow: 0 0 0 6px #40d8ff40; }
-.hotspot-label { opacity: 0; position: absolute; left: 50%; top: 50%; transform: translate(-50%, calc(-100% - 16px)); pointer-events: none; white-space: nowrap; padding: 7px 10px; border: 1px solid #78b2c9; border-radius: 2px; background: transparent; font-size: 12px; line-height: 1.5; transition: opacity .12s; }
+.hotspot-label { opacity: 0; position: absolute; left: 50%; top: 50%; transform: translate(-50%, calc(-100% - 16px)); pointer-events: none; white-space: nowrap; padding: 0; border: 0; background: transparent; color: #fff; font-size: 14px; font-weight: 700; line-height: 1.5; text-shadow: -1px -1px 1px #071321, 1px -1px 1px #071321, -1px 1px 1px #071321, 1px 1px 1px #071321, 0 2px 5px #071321; transition: opacity .12s; }
 .hotspot:hover .hotspot-label, .hotspot:focus-visible .hotspot-label { opacity: 1; }
+.hotspot:focus-visible .hotspot-label { text-decoration: underline; text-underline-offset: 4px; }
 .hotspot-label > span:first-child { color: var(--cyan); margin-right: 3px; }
 .hotspot-sub { display: block; color: #b7cfdb; padding-left: 18px; font-size: 10px; }
 .videos { left: 55%; top: 49%; width: 15%; height: 17%; }
