@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="../device-routing.js?v=20261109-1" data-page="clubroom"></script>
+<meta name="theme-color" content="#05080f">
+<meta name="description" content="Explore the Millennium Robotics Lab clubroom: videos, games, tools, and the people behind them.">
+<title>Clubroom | Millennium Robotics Lab / 千禧年机器人部</title>
+<link rel="icon" href="assets/mrl.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css?v=20261109-minimal-4">
+<script src="portfolio.js" defer></script>
+<script src="copy.js?v=20261109-minimal-2" defer></script>
+<script src="app.js?v=20261109-minimal-1" defer></script>
+</head>
+<body>
+<a class="skip" href="#portfolio" data-copy="skip">Skip to our work</a>
+<header>
+<a class="brand" href="./" aria-label="Millennium Robotics Lab / 千禧年机器人部"><img src="assets/mrl.svg" width="24" height="24" alt=""><span>MRL</span></a>
+<button id="language" class="language" aria-label="切换到中文" hidden>中文</button>
+</header>
+<main id="scene" class="scene" aria-label="Millennium Robotics Lab clubroom">
+<div class="art-plane"><picture><source media="(max-width: 640px)" srcset="assets/gdd-room-small.webp"><img id="room-image" src="assets/gdd-room.webp" width="1200" height="843" fetchpriority="high" alt="Game Development Department room illustration, with shelves of games and equipment, a central television, consoles on the floor, and a whiteboard." data-copy-alt="roomAlt"></picture>
+<div class="hotspots" aria-label="Clubroom areas" data-copy-aria="areas">
+<a href="#videos" data-category="videos" class="hotspot videos"><span class="hotspot-label" data-copy="videos">Videos</span></a>
+<a href="#games" data-category="games" class="hotspot games"><span class="hotspot-label" data-copy="games">Games</span></a>
+<a href="#tools" data-category="tools" class="hotspot tools"><span class="hotspot-label" data-copy="tools">Tools</span></a>
+<a href="#about" data-category="about" class="hotspot about"><span class="hotspot-label" data-copy="about">About</span></a>
+</div>
+</div>
+<div class="fallback" id="room-fallback" hidden><p data-copy="simpleBody">Artwork unavailable. Use the navigation to explore our work.</p></div>
+</main>
+<nav aria-label="Portfolio" data-copy-aria="navigation">
+<a href="#videos" data-category="videos" data-copy="videos">Videos</a><a href="#games" data-category="games" data-copy="games">Games</a><a href="#tools" data-category="tools" data-copy="tools">Tools</a><a href="#about" data-category="about" data-copy="about">About</a>
+</nav>
+<div id="portfolio" tabindex="-1">
+<section id="videos" class="portfolio-section" aria-labelledby="videos-title"><p class="panel-location" data-copy="screening">Screening corner</p><h2 id="videos-title" data-copy="videos">Videos</h2><p data-copy="videosIntro">Pull up a seat. Find our published videos on these channels.</p><div data-projects="videos"></div><div class="channel-links" data-links="videos"><a href="https://www.youtube.com/@project-arisu" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a href="https://space.bilibili.com/1161124651" target="_blank" rel="noopener noreferrer">Bilibili ↗</a></div><a class="static-close" href="#" data-copy="returnRoom">Back to the clubroom</a></section>
+<section id="games" class="portfolio-section" aria-labelledby="games-title"><p class="panel-location" data-copy="gaming">One more round?</p><h2 id="games-title" data-copy="games">Games</h2><p data-copy="gamesIntro">The gaming corner is ready for our game projects.</p><div data-projects="games"></div><p class="empty-note" data-copy="gamesEmpty">Development placeholder. No game projects have been added to this prototype.</p><a class="static-close" href="#" data-copy="returnRoom">Back to the clubroom</a></section>
+<section id="tools" class="portfolio-section" aria-labelledby="tools-title"><p class="panel-location" data-copy="workbench">Equipment shelf</p><h2 id="tools-title" data-copy="toolsLong">Tools & open source</h2><p data-copy="toolsIntro">Explore our public repositories. Individual project entries can be added here later.</p><div data-projects="tools"></div><div class="channel-links" data-links="tools"><a href="https://github.com/Millennium-Robotics-Lab" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><p class="empty-note" data-copy="toolsEmpty">No individual tool projects have been added to this prototype.</p><a class="static-close" href="#" data-copy="returnRoom">Back to the clubroom</a></section>
+<section id="about" class="portfolio-section" aria-labelledby="about-title"><p class="panel-location" data-copy="noticeboard">Club noticeboard</p><h2 id="about-title" data-copy="about">About</h2><p class="about-name">Millennium Robotics Lab<br><span lang="zh-Hans">千禧年机器人部</span> / MRL</p><p data-copy="aboutIntro">A shared home for our videos, games, tools, and experiments.</p><h3 data-copy="findUs">Find us</h3><div class="channel-links" data-links="about"><a href="https://www.youtube.com/@project-arisu" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a href="https://space.bilibili.com/1161124651" target="_blank" rel="noopener noreferrer">Bilibili ↗</a><a href="https://x.com/projectarisu" target="_blank" rel="noopener noreferrer">X / Twitter ↗</a><a href="https://github.com/Millennium-Robotics-Lab" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><h3 data-copy="contact">Contact</h3><p data-copy="contactBody">Reach us through the social profiles above. A dedicated contact address has not been supplied.</p><p class="empty-note" data-copy="unofficial">An independent club homepage inspired by Blue Archive. Not affiliated with or endorsed by its rights holders.</p><a class="static-close" href="#" data-copy="returnRoom">Back to the clubroom</a></section>
+</div>
+
+<dialog id="panel" aria-label="Club portfolio">
+<div class="panel-top"><button id="close-panel" class="close-panel" data-copy-aria="close" aria-label="Close panel">✕</button></div><div id="panel-content"></div><div class="panel-bottom"><a href="#" id="return-room" data-copy="returnRoom">Back to the clubroom</a><span data-copy="escape">Esc to close</span></div>
+</dialog>
+</body></html>

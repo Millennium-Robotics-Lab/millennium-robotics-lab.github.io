@@ -1,0 +1,6 @@
+# Local game-derived captures. Public redistribution has not been established.
+clubroom/assets/room*.webp
+evidence/clubroom/local/
+
+# Keep the original attachment local; publish only optimized web derivatives.
+clubroom/assets/gdd-room-original.png
