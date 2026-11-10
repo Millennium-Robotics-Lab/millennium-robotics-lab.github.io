@@ -73,6 +73,7 @@
    window.MRL_PANELS?.[id]?.render?.(sections[id], language, window.MRL_DATA);
   }
   renderProjects();
+  if (current) window.MRL_PANELS?.[current]?.onOpen?.(sections[current], language, window.MRL_DATA);
   updateArtwork();
  }
  function updateArtwork() {
@@ -87,14 +88,19 @@
  function hidePanel() {
   if (!current) return;
   clearEntrance();
-  const section = sections[current]; section.hidden = false; portfolio.append(section);
+  const section = sections[current];
+  window.MRL_PANELS?.[current]?.onClose?.(section);
+  section.hidden = false; portfolio.append(section);
   current = null; if (panel.open) panel.close(); document.body.classList.remove('modal-open');
   document.querySelectorAll('[data-category]').forEach(link => link.removeAttribute('aria-current'));
   const target = returnFocus?.isConnected ? returnFocus : document.querySelector('nav a'); target.focus({ preventScroll: true });
  }
  function showPanel(category) {
   if (!category) { hidePanel(); return; }
-  if (current && current !== category) portfolio.append(sections[current]);
+  if (current && current !== category) {
+   window.MRL_PANELS?.[current]?.onClose?.(sections[current]);
+   portfolio.append(sections[current]);
+  }
   current = category; content.replaceChildren(sections[category]);
   panel.setAttribute('aria-labelledby', category + '-title');
   document.querySelectorAll('[data-category]').forEach(link => { if (link.dataset.category === category) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current'); });

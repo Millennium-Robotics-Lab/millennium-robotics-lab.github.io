@@ -1,26 +1,22 @@
 (() => {
   'use strict';
 
-  const github = 'https://github.com/Millennium-Robotics-Lab';
   const copy = {
     en: {
       title: 'Tools & open source',
-      intro: 'Explore our public code, creative tools, and experiments.',
+
       source: 'Source', download: 'Downloads & release notes', docs: 'Documentation',
       upstream: 'Upstream project', project: 'Project page', all: 'All repositories on GitHub',
       return: 'Back to the clubroom', newTab: 'opens in a new tab'
     },
     zh: {
       title: '工具与开源项目',
-      intro: '查看我们的公开代码、创作工具与实验项目。',
+
       source: '源代码', download: '下载与发行说明', docs: '使用文档',
       upstream: '上游项目', project: '项目页面', all: '在 GitHub 查看全部仓库',
       return: '返回部室', newTab: '在新标签页打开'
     }
   };
-
-  // Verified public sources and extension fields are documented in tools-sources.md.
-
 
   function localized(value, language) {
     if (typeof value === 'string') return value;
@@ -79,13 +75,21 @@
     const fragment = document.createDocumentFragment();
     fragment.append(element('h2', '', text.title));
     fragment.firstChild.id = 'tools-title';
-    fragment.append(element('p', 'tools-intro', text.intro));
+
     const list = element('div', 'tools-list');
     for (const project of projects(data)) {
       const title = localized(project.title, lang);
       if (!title) continue;
       const article = element('article', 'tools-entry');
       article.append(element('h3', '', title));
+      if (project.image) {
+        const image = document.createElement('img');
+        image.className = 'tools-screenshot';
+        image.dataset.source = project.image;
+        image.alt = localized(project.imageAlt, lang);
+        image.width = 1600; image.height = 1000; image.decoding = 'async';
+        article.append(image);
+      }
       const description = localized(project.description, lang);
       if (description) article.append(element('p', 'tools-description', description));
       const note = localized(project.note, lang);
@@ -106,10 +110,6 @@
       list.append(article);
     }
     fragment.append(list);
-    const all = element('p', 'tools-all');
-    // Keep the verified organization link available even when supplied data is empty or invalid.
-    all.append(link(github, text.all, 'GitHub', text));
-    fragment.append(all);
     const close = element('a', 'static-close', text.return);
     close.href = '#';
     fragment.append(close);
@@ -117,7 +117,12 @@
     section.replaceChildren(fragment);
   }
 
-  const panel = { render };
+  function onOpen(section) {
+    section.querySelectorAll('img[data-source]').forEach(image => {
+      if (!image.getAttribute('src')) image.src = image.dataset.source;
+    });
+  }
+  const panel = { render, onOpen };
   window.MRL_PANELS = window.MRL_PANELS || {};
   window.MRL_PANELS.tools = panel;
 })();

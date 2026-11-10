@@ -1,18 +1,10 @@
-/* The room and native dialog remain controlled by the shared styles. */
-#videos .videos-intro { margin-top: -8px; }
-#videos .videos-channels { list-style: none; padding: 0; margin: 12px 0 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-#videos .videos-channels li { min-width: 0; }
-#videos .videos-channel { display: flex; flex-direction: column; height: 100%; padding: 18px; border: 1px solid #385a70; border-radius: 3px; background: #102336; text-decoration: none; overflow-wrap: anywhere; }
-#videos .videos-channel:hover { border-color: var(--cyan, #83e4ed); background: #142d40; }
-#videos .videos-channel:focus-visible { outline: 2px solid var(--cyan, #83e4ed); outline-offset: 3px; }
-#videos .videos-channel-name { color: #edf6fa; font-size: 18px; font-weight: 700; }
-#videos .videos-channel-id { color: #a6c1d1; font-size: 12px; margin-top: 5px; }
-#videos .videos-channel-description { color: #bbceda; font-size: 13px; line-height: 1.65; margin: 16px 0; }
-#videos .videos-channel-action { color: var(--cyan, #83e4ed); font-size: 13px; margin-top: auto; padding-top: 4px; text-decoration: underline; text-underline-offset: 4px; }
-#videos .videos-selection { border-top: 1px solid #385a70; padding-top: 4px; }
-#videos .videos-selection h3 { margin: 16px 0 8px; }
-#videos .videos-selection p { margin: 8px 0; }
-#videos .videos-note { color: #a6c1d1; font-size: 12px; line-height: 1.7; margin: 20px 0 8px; }
-@media (max-width: 480px) {
-  #videos .videos-channels { grid-template-columns: 1fr; }
-}
+#videos .videos-card { border: 1px solid var(--line); padding: 18px; border-radius: 3px; }
+#videos .videos-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+#videos .videos-card-header img { width: 28px; height: 28px; flex: none; }
+#videos .videos-card-header h3 { margin: 0; font-size: 20px; }
+#videos .videos-card-header a { margin-left: auto; font-size: 14px; }
+#videos .videos-player { width: 100%; aspect-ratio: 16 / 9; background: #05080f; margin: 0 auto 18px; }
+#videos .videos-short { width: min(100%, 240px); aspect-ratio: 9 / 16; }
+#videos .videos-player iframe { display: block; width: 100%; height: 100%; border: 0; }
+#videos .videos-card > a { display: block; font-size: 14px; line-height: 1.65; overflow-wrap: anywhere; }
+#videos a { text-underline-offset: 4px; }

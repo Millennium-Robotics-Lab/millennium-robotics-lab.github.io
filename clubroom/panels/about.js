@@ -2,25 +2,21 @@
  'use strict';
  const copy = {
   en: {
-   title: 'About & contact', intro: 'AI-made memes about AI.',
+   title: 'About',
    profiles: 'Find us', newTab: 'opens in a new tab',
-   contact: 'Get in touch',
-   guidance: 'For questions or feedback, visit our social profiles and use the contact options available there. No dedicated contact email is listed on this site.',
    note: 'This is an independent homepage inspired by Blue Archive. MRL is not affiliated with or endorsed by its rights holders.',
    back: 'Back to the clubroom',
    descriptions: ['Videos', 'Videos', 'Posts & updates', 'Public repositories']
   },
   zh: {
-   title: '关于与联系', intro: '用 AI 制作关于 AI 的趣味内容。',
+   title: '关于',
    profiles: '找到我们', newTab: '在新标签页打开',
-   contact: '联系与反馈',
-   guidance: '如有问题或反馈，请访问我们的社交主页，使用平台提供的联系功能。本站暂未列出专用联系邮箱。',
    note: '这是受《蔚蓝档案》启发的独立主页。MRL 与其权利人无隶属关系，亦未获其背书。',
    back: '返回部室',
    descriptions: ['视频', '视频', '动态与更新', '公开仓库']
   }
  };
- // Verified in the current root homepage (index.html); no external media is loaded.
+ // Public profile destinations retained from the current homepage.
  const profiles = [
   ['YouTube', 'https://www.youtube.com/@project-arisu', '@project-arisu'],
   ['Bilibili', 'https://space.bilibili.com/1161124651', '1161124651'],
@@ -55,19 +51,25 @@
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.setAttribute('aria-label', `${name}, ${t.newTab}`);
+    const icon = document.createElement('img');
+    icon.className = 'about-icon';
+    icon.src = 'assets/' + ['youtube', 'bilibili', 'x', 'github'][index] + '.svg';
+    icon.alt = '';
+    icon.width = 28; icon.height = 28;
+    const details = element('span', '', 'about-details');
     const label = element('span', name, 'about-platform');
     const arrow = element('span', '↗');
     arrow.setAttribute('aria-hidden', 'true');
     label.append(arrow);
-    link.append(label, element('span', handle, 'about-handle'), element('span', t.descriptions[index], 'about-description'));
+    details.append(label, element('span', handle, 'about-handle'), element('span', t.descriptions[index], 'about-description'));
+    link.append(icon, details);
     item.append(link);
     links.append(item);
    });
    const back = element('a', t.back, 'static-close');
    back.href = '#';
    section.setAttribute('aria-labelledby', title.id);
-   section.replaceChildren(title, brand, element('p', t.intro, 'about-intro'), heading, links,
-    element('h3', t.contact), element('p', t.guidance), element('p', t.note, 'about-unofficial'), back);
+   section.replaceChildren(title, brand, heading, links, element('p', t.note, 'about-unofficial'), back);
   }
  };
  window.MRL_PANELS = window.MRL_PANELS || {};

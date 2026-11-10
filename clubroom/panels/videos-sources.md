@@ -1,21 +1,12 @@
-# Videos panel sources
+# Featured videos
 
-Checked 2026-11-10.
+Checked 2026-11-10. Content is configured in `clubroom/portfolio.js`.
 
-- YouTube: https://www.youtube.com/@project-arisu
-- Bilibili: https://space.bilibili.com/1161124651
+- YouTube channel: https://www.youtube.com/@project-arisu , channel ID `UCMVoEs4AWxaBn-K3Un3XFhQ`.
+- Read the public `/videos` and `/shorts` listings with yt-dlp: 13 videos and 10 Shorts. Compared their listed view counts. The largest was Short `nfxeo7wM8Xc` (about 1.4K in the listing); the next Short was about 1.3K. The largest regular video had 52 listed views.
+- Selected URL: https://www.youtube.com/shorts/nfxeo7wM8Xc . A separate video-detail read through agent-reach verified the author as Millennium Robotics Lab, publication date 2026-11-09, duration 64 seconds, and 1,473 views at check time. Counts change; the interface does not display a permanent popularity ranking.
+- The Chinese card uses https://space.bilibili.com/1161124651 . Its public upload-list API returned HTTP 412. The installed uploader-list CLI returned no usable result. The owner was asked for the most popular video's URL or BV ID. No video ID is invented.
 
-Both channel URLs are supplied as verified links in the assignment and match
-`clubroom/portfolio.js`. The displayed handle and numeric identity come from
-those URLs. No channel display name, upload count, video title, thumbnail,
-publication date, or video URL is claimed.
+English shows only the YouTube card. Simplified Chinese shows only the Bilibili card. This selection uses the language setting, not country detection. All profiles remain available in About.
 
-Direct web reads returned “Online fetch throttled” for YouTube and “not
-accessible via this tool” for Bilibili. Search did not return usable channel
-metadata. This does not establish that either channel has no videos.
-The panel therefore provides channel discovery and an honest empty local
-selection. It makes no external requests and contains no media assets.
-
-Integration: registers the same renderer in the requested `MRL_videosS` and the
-checkout's existing `MRL_PANELS` dispatcher. No onOpen hook is needed.
-The existing no-JS section can remain as the channel-link fallback.
+The selected official player is mounted only when Videos opens. Autoplay is disabled. Closing the panel removes its iframe. The page includes no downloaded video, thumbnail, or audio files. Original media rights remain with their owners.
