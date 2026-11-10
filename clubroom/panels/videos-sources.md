@@ -9,4 +9,16 @@ Checked 2026-11-10. Content is configured in `clubroom/portfolio.js`.
 
 English shows only the YouTube card. Simplified Chinese shows only the Bilibili card. This selection uses the language setting, not country detection. All profiles remain available in About.
 
-The selected official player is mounted only when Videos opens. Autoplay is disabled. Closing the panel removes its iframe. The page includes no downloaded video, thumbnail, or audio files. Original media rights remain with their owners.
+The Bilibili player mounts when Videos opens. YouTube mounts after the visitor selects Load video. Autoplay is disabled. Closing removes the iframe. The page includes one local YouTube thumbnail, with provenance below, and no video or audio files. Original media rights remain with their owners.
+
+## Blank-player correction
+
+The old renderer mounted an iframe immediately and treated its presence as success. A blocked or stalled third-party request left an empty dark rectangle. The regression test reproduces that failure with blocked YouTube requests and with a loaded iframe that never reports player readiness.
+
+YouTube now uses its official IFrame Player API (`https://www.youtube.com/iframe_api`) and standard embed host. The local preview remains visible until `onReady`; API errors, player errors, and timeouts keep recovery controls visible. An iframe `load` event is not used as a readiness signal. The player starts loading only after “Load video” is selected, with autoplay disabled. The direct video link is always available. Closing cancels timers, destroys the player, and ignores late completion.
+
+API reference: https://developers.google.com/youtube/iframe_api_reference . Player parameters: https://developers.google.com/youtube/player_parameters . The UI uses a landscape player viewport with a minimum height of 200 CSS pixels.
+
+`clubroom/assets/youtube-featured.webp` is the original thumbnail downloaded by yt-dlp for `nfxeo7wM8Xc` on 2026-11-10, unchanged, approximately 75 KB. It is served locally when Videos opens. Media rights remain with their owners; caching the thumbnail does not grant rights to its underlying Blue Archive imagery. No video or audio file is included.
+
+Local browser verification observed YouTube readiness, manual playback at state `1` and time `33.18` seconds, followed by completion at `63.641` seconds. This verifies playback in the test browser, not connectivity in every visitor's environment. Blocked and unready-player recovery are tested separately.
