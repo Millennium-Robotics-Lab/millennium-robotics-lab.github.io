@@ -103,6 +103,7 @@ dialog {
   height: fit-content;
   max-height: calc(100dvh - 48px);
   overflow: auto;
+  scrollbar-width: none;
   overscroll-behavior: contain;
   padding: 0;
   border: 1px solid #547c91;
@@ -111,6 +112,7 @@ dialog {
   color: var(--text);
   box-shadow: 0 20px 100px #0009;
 }
+dialog::-webkit-scrollbar { display: none; width: 0; height: 0; }
 dialog::backdrop { background: #020812a8; backdrop-filter: blur(4px); }
 dialog { transform-origin: center; }
 .panel-top { position: sticky; top: 0; height: 0; z-index: 2; display: flex; justify-content: flex-end; overflow: visible; }
