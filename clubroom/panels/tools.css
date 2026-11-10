@@ -1,1 +1,69 @@
-/* Styles for #tools only. The shared dialog stays centered. */
+#tools .tools-intro {
+  margin: 0 0 22px;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#tools .tools-entry {
+  padding: 20px 0 16px;
+  border-top: 1px solid var(--line, #345369);
+  overflow-wrap: anywhere;
+}
+
+#tools .tools-entry h3 {
+  margin: 0 0 8px;
+  color: var(--text, #eef8ff);
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+#tools .tools-description {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+#tools .tools-note {
+  margin: 8px 0 0;
+  color: var(--muted, #a4bfce);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+#tools .tools-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
+  margin-top: 8px;
+}
+
+#tools .tools-actions a,
+#tools .tools-all a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 0;
+  color: var(--cyan, #40d8ff);
+  font-size: 14px;
+  line-height: 1.5;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+
+#tools .tools-actions a:hover,
+#tools .tools-all a:hover {
+  color: var(--text, #eef8ff);
+}
+
+#tools .tools-actions a:focus-visible,
+#tools .tools-all a:focus-visible {
+  outline: 2px solid var(--cyan, #40d8ff);
+  outline-offset: 3px;
+}
+
+#tools .tools-all {
+  margin: 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--line, #345369);
+}
