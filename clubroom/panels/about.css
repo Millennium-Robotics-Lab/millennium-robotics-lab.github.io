@@ -1,1 +1,66 @@
-/* Styles for #about only. The shared dialog stays centered. */
+#about .about-brand {
+ margin: 0;
+ color: var(--text);
+ font-size: 21px;
+ font-weight: 700;
+ line-height: 1.4;
+}
+#about .about-brand-secondary {
+ display: block;
+ margin-top: 5px;
+ font-size: 16px;
+ font-weight: 400;
+ color: #bbceda;
+}
+#about .about-brand-short {
+ display: inline-block;
+ margin-top: 8px;
+ font-size: 12px;
+ letter-spacing: 1px;
+ color: var(--muted);
+}
+#about .about-intro { margin-top: 8px; }
+#about .about-profiles {
+ display: grid;
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ gap: 10px;
+ margin: 0;
+ padding: 0;
+ list-style: none;
+}
+#about .about-profiles li { min-width: 0; }
+#about .about-profiles a {
+ display: flex;
+ flex-direction: column;
+ height: 100%;
+ gap: 5px;
+ padding: 13px 14px;
+ border: 1px solid var(--line);
+ border-radius: 2px;
+ text-decoration: none;
+ overflow-wrap: anywhere;
+}
+#about .about-profiles a:hover {
+ border-color: var(--cyan);
+ background: #102336;
+}
+#about .about-platform {
+ display: flex;
+ justify-content: space-between;
+ gap: 12px;
+ font-size: 15px;
+ font-weight: 700;
+}
+#about .about-platform > span { color: var(--cyan); }
+#about .about-handle { color: #bbceda; font-size: 12px; }
+#about .about-description { color: var(--muted); font-size: 12px; }
+#about .about-unofficial {
+ margin-top: 24px;
+ padding-top: 16px;
+ border-top: 1px solid var(--line);
+ font-size: 12px;
+ color: var(--muted);
+}
+@media (max-width: 480px) {
+ #about .about-profiles { grid-template-columns: 1fr; }
+}
