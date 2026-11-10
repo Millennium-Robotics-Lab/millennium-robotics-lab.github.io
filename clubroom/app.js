@@ -69,7 +69,11 @@
     const link = document.createElement('a'); link.href = url.href; link.textContent = item.label + ' ↗'; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.setAttribute('aria-label', item.label + ', ' + text('newTab')); container.append(link);
    }
   });
-  renderProjects(); updateArtwork();
+  renderProjects();
+  for (const id of categories) {
+   window.MRL_PANELS?.[id]?.render?.(sections[id], language, window.MRL_DATA);
+  }
+  updateArtwork();
  }
  function updateArtwork() {
   scene.classList.toggle('artwork-unavailable', imageFailed);
@@ -107,6 +111,7 @@
    }
   }
   panel.scrollTop = 0; document.body.classList.add('modal-open'); closeButton.focus({ preventScroll: true });
+  window.MRL_PANELS?.[category]?.onOpen?.(sections[category], language, window.MRL_DATA);
  }
  function requestClose() {
   if (!current) return;
