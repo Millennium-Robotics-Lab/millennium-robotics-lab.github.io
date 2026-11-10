@@ -1,1 +1,22 @@
-/* Styles for #games only. The shared dialog stays centered. */
+#games { overflow-wrap: anywhere; }
+
+#games .games-empty { margin: 0 0 24px; }
+#games .games-empty h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.5; font-weight: 600; color: var(--text); }
+#games .games-empty p { margin: 0; }
+
+#games .games-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 20px 0 8px; }
+#games .games-links a,
+#games .games-project > a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 0; color: var(--cyan); font-size: 14px; line-height: 1.5; text-underline-offset: 4px; }
+#games a:hover { color: var(--text); }
+
+#games .games-project { padding: 0 0 22px; margin: 0 0 22px; border-bottom: 1px solid var(--line); }
+#games .games-project h3 { margin: 0 0 8px; font-size: 19px; line-height: 1.5; color: var(--text); }
+#games .games-project p { margin: 8px 0; white-space: pre-line; }
+#games .games-project .games-status { color: var(--muted); font-size: 12px; }
+#games .games-media { margin-top: 12px; }
+#games .games-image-load { min-height: 44px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 2px; background: transparent; color: var(--cyan); }
+#games .games-image-load:hover { border-color: var(--cyan); }
+#games .games-image-load:disabled { cursor: wait; color: var(--muted); }
+#games .games-media-feedback { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+#games .games-media-feedback:empty { display: none; }
+#games .games-media img { display: block; max-width: 100%; height: auto; margin-top: 10px; }
