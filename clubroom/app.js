@@ -10,6 +10,11 @@
  const image = document.querySelector('#room-image');
  const fallback = document.querySelector('#room-fallback');
  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+ let panelEntrance = null;
+ function clearEntrance() {
+  panelEntrance?.cancel();
+  panelEntrance = null;
+ }
  const sections = Object.fromEntries(categories.map(id => [id, document.getElementById(id)]));
  let language = 'en', imageFailed = false, current = null, returnFocus = null, localEntry = false;
  try { language = localStorage.getItem('mrl-language') === 'zh' ? 'zh' : 'en'; } catch { /* Storage is optional. */ }
@@ -77,6 +82,7 @@
  function categoryFromHash() { const key = location.hash.slice(1); return categories.includes(key) ? key : null; }
  function hidePanel() {
   if (!current) return;
+  clearEntrance();
   const section = sections[current]; section.hidden = false; portfolio.append(section);
   current = null; if (panel.open) panel.close(); document.body.classList.remove('modal-open');
   document.querySelectorAll('[data-category]').forEach(link => link.removeAttribute('aria-current'));
@@ -88,7 +94,18 @@
   current = category; content.replaceChildren(sections[category]);
   panel.setAttribute('aria-labelledby', category + '-title');
   document.querySelectorAll('[data-category]').forEach(link => { if (link.dataset.category === category) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current'); });
-  if (!panel.open) panel.showModal();
+  if (!panel.open) {
+   clearEntrance();
+   panel.showModal();
+   if (!reducedMotion.matches && typeof panel.animate === 'function') {
+    panelEntrance = panel.animate([
+     { opacity: 0, transform: 'translateY(8px) scale(.96)' },
+     { opacity: 1, transform: 'translateY(0) scale(1)' }
+    ], { duration: 220, easing: 'cubic-bezier(.23, 1, .32, 1)' });
+    // Use the document clock so the entrance starts with the open action.
+    panelEntrance.startTime = document.timeline.currentTime;
+   }
+  }
   panel.scrollTop = 0; document.body.classList.add('modal-open'); closeButton.focus({ preventScroll: true });
  }
  function requestClose() {
@@ -125,7 +142,7 @@
  // There is no render loop, autoplay, or audio. Hidden pages do no scene work.
  function visibility() { scene.classList.toggle('page-hidden', document.hidden); }
  document.addEventListener('visibilitychange', visibility); visibility();
- function motion() { document.documentElement.classList.toggle('reduced-motion', reducedMotion.matches); }
+ function motion() { document.documentElement.classList.toggle('reduced-motion', reducedMotion.matches); if (reducedMotion.matches) clearEntrance(); }
  reducedMotion.addEventListener('change', motion); motion();
- languageButton.hidden = false; viewButton.hidden = false; applyLanguage();
+ languageButton.hidden = false; applyLanguage();
 })();

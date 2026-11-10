@@ -112,6 +112,7 @@ dialog {
   box-shadow: 0 20px 100px #0009;
 }
 dialog::backdrop { background: #020812a8; backdrop-filter: blur(4px); }
+dialog { transform-origin: center; }
 .panel-top { position: sticky; top: 0; height: 0; z-index: 2; display: flex; justify-content: flex-end; overflow: visible; }
 .close-panel { flex: 0 0 40px; margin: 10px; width: 40px; height: 40px; font-size: 17px; border: 1px solid transparent; border-radius: 2px; background: var(--panel); }
 .close-panel:hover { border-color: var(--line); color: var(--cyan); }
