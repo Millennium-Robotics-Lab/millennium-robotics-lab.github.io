@@ -7,7 +7,7 @@ const { readFile } = require('node:fs/promises');
 const path = require('node:path');
 const run = promisify(execFile);
 
-test('blocked and unready YouTube players retain their preview and recovery controls', { timeout: 45000 }, async () => {
+test('player errors recover while slow YouTube readiness remains valid', { timeout: 45000 }, async () => {
   const root = path.resolve(__dirname, '..');
   const types = { '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/html', '.webp': 'image/webp', '.svg': 'image/svg+xml' };
   const server = createServer(async (req, res) => {
@@ -21,7 +21,6 @@ test('blocked and unready YouTube players retain their preview and recovery cont
   const browser = (...args) => run('agent-browser', ['--session', session, ...args], { timeout: 25000 });
   try {
     await browser('open', `http://127.0.0.1:${server.address().port}/clubroom/`);
-    await browser('network', 'route', '**/*youtube*/*', '--abort');
     // Use a single argument, without shell interpolation, for the browser-side assertion.
     const result = await browser('eval', `(async()=>{
       document.querySelector('nav [data-category="videos"]').click();
@@ -30,12 +29,19 @@ test('blocked and unready YouTube players retain their preview and recovery cont
       if(!button || !area.querySelector('img'))throw Error('BLANK_PLAYER: no local preview or load control');
       if(area.querySelector('iframe'))throw Error('Player loads before user request');
       await area.querySelector('img').decode();
+      window.YT={Player: class {
+        constructor(host, options) {
+          this.frame=document.createElement('iframe');this.frame.src='about:blank';host.replaceWith(this.frame);
+          setTimeout(()=>options.events.onError({data:150}),50);
+        }
+        destroy() { this.frame.remove(); }
+      }};
       button.click();
       const until=Date.now()+11000;
       while(button.disabled && Date.now()<until)await new Promise(r=>setTimeout(r,100));
       if(button.disabled)throw Error('Loading never recovers');
       if(!area.querySelector('img')?.naturalWidth)throw Error('Missing local preview');
-      if(area.querySelector('iframe'))throw Error('Failed iframe remains mounted');
+      if(area.querySelector('iframe') || area.dataset.state!=='failed' || area.dataset.error!=='150')throw Error('Player error did not clean up the frame');
       if(!document.querySelector('#videos .videos-external')?.href.includes('nfxeo7wM8Xc'))throw Error('Missing direct video action');
       if(!document.querySelector('#videos [role="status"]').textContent.trim())throw Error('No failure feedback');
       // A loaded iframe is not proof of a working player. Never emit onReady.
@@ -48,7 +54,7 @@ test('blocked and unready YouTube players retain their preview and recovery cont
       if(area.dataset.state==='ready')throw Error('An iframe load was mistaken for readiness');
       const deadline=Date.now()+11000;
       while(button.disabled && Date.now()<deadline)await new Promise(r=>setTimeout(r,100));
-      if(button.disabled || area.querySelector('iframe') || !area.querySelector('img').naturalWidth)throw Error('Unready iframe leaves a blank player');
+      if(button.disabled || area.dataset.state!=='slow' || !area.querySelector('iframe') || !area.querySelector('img').naturalWidth)throw Error('Slow iframe was cancelled instead of retaining its preview');
       button.click();
       document.querySelector('#return-room').click();
       await new Promise(r=>setTimeout(r,100));
@@ -56,6 +62,23 @@ test('blocked and unready YouTube players retain their preview and recovery cont
       return 'PASS: blocked player recovers';
     })()`);
     assert.match(result.stdout, /PASS: blocked player recovers/);
+    const slow = await browser('eval', `(async()=>{
+      document.querySelector('nav [data-category="videos"]').click();
+      const area=document.querySelector('#videos .videos-player');
+      window.YT={Player: class {
+        constructor(host, options) {
+          this.frame=document.createElement('iframe');this.frame.src='about:blank';host.replaceWith(this.frame);
+          setTimeout(()=>options.events.onReady({target:this}),12000);
+        }
+        destroy() { this.frame.remove(); }
+      }};
+      area.querySelector('button').click();
+      await new Promise(r=>setTimeout(r,12500));
+      if(area.dataset.state!=='ready'||!area.querySelector('iframe'))throw Error('SLOW_PLAYER_CANCELLED: readiness after 10 seconds was discarded');
+      return 'PASS: slow readiness survives';
+    })()`);
+    assert.match(slow.stdout, /PASS: slow readiness survives/);
+
   } finally {
     await browser('close').catch(() => {});
     await new Promise(resolve => server.close(resolve));

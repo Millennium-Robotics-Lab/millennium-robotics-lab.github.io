@@ -1,20 +1,22 @@
 (() => {
   'use strict';
   const copy = {
-    en: { title: 'Videos', channel: 'YouTube', channelLink: 'Open channel', load: 'Load video', retry: 'Retry player', loading: 'Loading player…', failed: 'Player unavailable. You can watch on YouTube.', watch: 'Watch on YouTube', back: 'Back to the clubroom' },
-    zh: { title: '视频', channel: '哔哩哔哩', channelLink: '打开主页', load: '加载视频', retry: '重试播放器', loading: '正在加载播放器…', failed: '播放器暂时无法加载。可前往哔哩哔哩观看。', watch: '在哔哩哔哩观看', back: '返回部室' }
+    en: { title: 'Videos', channel: 'YouTube', channelLink: 'Open channel', load: 'Load video', retry: 'Retry player', loading: 'Loading player…', slow: 'Still loading. You can wait or watch on YouTube.', failed: 'Player unavailable. You can watch on YouTube.', watch: 'Watch on YouTube', back: 'Back to the clubroom' },
+    zh: { title: '视频', channel: '哔哩哔哩', channelLink: '打开主页', load: '加载视频', retry: '重试播放器', loading: '正在加载播放器…', slow: '仍在加载。可以继续等待，或前往哔哩哔哩观看。', failed: '播放器暂时无法加载。可前往哔哩哔哩观看。', watch: '在哔哩哔哩观看', back: '返回部室' }
   };
   const sessions = new WeakMap();
-  let youtubeAPI = null;
+  let youtubeAPI = null, cancelYouTube = null;
   function loadYouTube() {
     if (window.YT?.Player) return Promise.resolve(window.YT);
     if (youtubeAPI) return youtubeAPI;
     youtubeAPI = new Promise((resolve, reject) => {
       const script = document.createElement('script');
       const previous = window.onYouTubeIframeAPIReady;
-      const timer = setTimeout(() => finish(new Error('Player API timed out')), 8000);
+      let settled = false;
+      cancelYouTube = () => finish(new Error('Player load restarted'));
       function finish(error) {
-        clearTimeout(timer);
+        if (settled) return;
+        settled = true; cancelYouTube = null;
         if (window.onYouTubeIframeAPIReady === ready) window.onYouTubeIframeAPIReady = previous;
         if (error) { script.remove(); youtubeAPI = null; reject(error); }
         else resolve(window.YT);
@@ -57,17 +59,25 @@
   }
   function startYouTube(section, area, video, text) {
     onClose(section);
+    if (!window.YT?.Player) cancelYouTube?.();
     const button = area.querySelector('.videos-load');
     const status = section.querySelector('[role="status"]');
     const session = { cancelled: false, api: null, timer: null };
     sessions.set(section, session);
+    delete area.dataset.error;
     area.dataset.state = 'loading'; button.disabled = true; status.textContent = text.loading;
-    function fail() {
+    function fail(error) {
       if (session.cancelled) return;
       onClose(section);
-      area.dataset.state = 'failed'; button.textContent = text.retry; status.textContent = text.failed;
+      area.dataset.state = 'failed';
+      area.dataset.error = String(error?.data || error?.message || 'player-error');
+      button.textContent = text.retry; status.textContent = text.failed;
     }
-    session.timer = setTimeout(fail, 10000);
+    session.timer = setTimeout(() => {
+      if (session.cancelled) return;
+      area.dataset.state = 'slow'; button.disabled = false;
+      button.textContent = text.retry; status.textContent = text.slow;
+    }, 10000);
     loadYouTube().then(YT => {
       if (session.cancelled || !area.isConnected) return;
       const host = node('div', '', 'videos-host'); area.append(host);
