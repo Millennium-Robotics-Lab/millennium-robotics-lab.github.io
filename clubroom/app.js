@@ -69,10 +69,10 @@
     const link = document.createElement('a'); link.href = url.href; link.textContent = item.label + ' ↗'; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.setAttribute('aria-label', item.label + ', ' + text('newTab')); container.append(link);
    }
   });
-  renderProjects();
   for (const id of categories) {
    window.MRL_PANELS?.[id]?.render?.(sections[id], language, window.MRL_DATA);
   }
+  renderProjects();
   updateArtwork();
  }
  function updateArtwork() {

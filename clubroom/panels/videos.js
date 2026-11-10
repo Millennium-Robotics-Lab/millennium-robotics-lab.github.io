@@ -66,7 +66,11 @@
       list.append(item);
     }
     const selection = node('div', '', 'videos-selection');
-    selection.append(node('h3', text.selection), node('p', text.empty));
+    selection.append(node('h3', text.selection));
+    const projects = node('div');
+    projects.dataset.projects = 'videos';
+    selection.append(projects);
+    if (!data?.projects?.videos?.length) selection.append(node('p', text.empty));
     const note = node('p', text.note, 'videos-note');
     const back = node('a', text.back, 'static-close');
     back.href = '#';
@@ -74,9 +78,6 @@
   }
 
   const panel = { render };
-  window.MRL_videosS = window.MRL_videosS || {};
-  window.MRL_videosS.videos = panel;
-  // Compatibility with the dispatcher currently present in this checkout.
   window.MRL_PANELS = window.MRL_PANELS || {};
   window.MRL_PANELS.videos = panel;
 })();

@@ -70,9 +70,6 @@
     element('h3', t.contact), element('p', t.guidance), element('p', t.note, 'about-unofficial'), back);
   }
  };
- window.MRL_aboutS = window.MRL_aboutS || {};
- window.MRL_aboutS.about = panel;
- // The existing shared app uses MRL_PANELS. Keep both integration names supported.
  window.MRL_PANELS = window.MRL_PANELS || {};
  window.MRL_PANELS.about = panel;
 })();
