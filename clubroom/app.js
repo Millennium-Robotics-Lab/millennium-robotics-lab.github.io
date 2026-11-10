@@ -142,7 +142,6 @@
   addEventListener('popstate', () => { localEntry = false; showPanel(categoryFromHash()); });
   addEventListener('hashchange', () => showPanel(categoryFromHash()));
   document.querySelector('.skip').addEventListener('click', event => { event.preventDefault(); returnFocus = document.querySelector('.skip'); history.pushState(null, '', '#videos'); localEntry = true; showPanel('videos'); });
-  showPanel(categoryFromHash());
  }
  // There is no render loop, autoplay, or audio. Hidden pages do no scene work.
  function visibility() { scene.classList.toggle('page-hidden', document.hidden); }
@@ -150,4 +149,5 @@
  function motion() { document.documentElement.classList.toggle('reduced-motion', reducedMotion.matches); if (reducedMotion.matches) clearEntrance(); }
  reducedMotion.addEventListener('change', motion); motion();
  languageButton.hidden = false; applyLanguage();
+ if (typeof panel.showModal === 'function') showPanel(categoryFromHash());
 })();
