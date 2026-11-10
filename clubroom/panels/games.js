@@ -148,9 +148,6 @@
   }
 
   const panel = { render };
-  window.MRL_gamesS = window.MRL_gamesS || {};
-  window.MRL_gamesS.games = panel;
-  // The existing shared app uses this registry.
   window.MRL_PANELS = window.MRL_PANELS || {};
   window.MRL_PANELS.games = panel;
 })();

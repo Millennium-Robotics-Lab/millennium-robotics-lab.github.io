@@ -9,17 +9,17 @@
 <title>Clubroom | Millennium Robotics Lab / 千禧年机器人部</title>
 <link rel="icon" href="assets/mrl.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css?v=20261110-5">
-<link rel="stylesheet" href="panels/videos.css?v=20261110-1">
-<link rel="stylesheet" href="panels/games.css?v=20261110-1">
-<link rel="stylesheet" href="panels/tools.css?v=20261110-1">
-<link rel="stylesheet" href="panels/about.css?v=20261110-1">
-<script src="portfolio.js" defer></script>
+<link rel="stylesheet" href="panels/videos.css?v=20261110-panels-6">
+<link rel="stylesheet" href="panels/games.css?v=20261110-panels-6">
+<link rel="stylesheet" href="panels/tools.css?v=20261110-panels-6">
+<link rel="stylesheet" href="panels/about.css?v=20261110-panels-6">
+<script src="portfolio.js?v=20261110-panels-6" defer></script>
 <script src="copy.js?v=20261109-minimal-2" defer></script>
-<script src="panels/videos.js?v=20261110-1" defer></script>
-<script src="panels/games.js?v=20261110-1" defer></script>
-<script src="panels/tools.js?v=20261110-1" defer></script>
-<script src="panels/about.js?v=20261110-1" defer></script>
-<script src="app.js?v=20261110-panels-4" defer></script>
+<script src="panels/videos.js?v=20261110-panels-6" defer></script>
+<script src="panels/games.js?v=20261110-panels-6" defer></script>
+<script src="panels/tools.js?v=20261110-panels-6" defer></script>
+<script src="panels/about.js?v=20261110-panels-6" defer></script>
+<script src="app.js?v=20261110-panels-6" defer></script>
 </head>
 <body>
 <a class="skip" href="#portfolio" data-copy="skip">Skip to our work</a>
@@ -43,8 +43,56 @@
 </nav>
 <div id="portfolio" tabindex="-1">
 <section id="videos" class="portfolio-section" aria-labelledby="videos-title"><p class="panel-location" data-copy="screening">Screening corner</p><h2 id="videos-title" data-copy="videos">Videos</h2><p data-copy="videosIntro">Pull up a seat. Find our published videos on these channels.</p><div data-projects="videos"></div><div class="channel-links" data-links="videos"><a href="https://www.youtube.com/@project-arisu" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a href="https://space.bilibili.com/1161124651" target="_blank" rel="noopener noreferrer">Bilibili ↗</a></div><a class="static-close" href="#" data-copy="returnRoom">Back to the clubroom</a></section>
-<section id="games" class="portfolio-section" aria-labelledby="games-title"><p class="panel-location" data-copy="gaming">One more round?</p><h2 id="games-title" data-copy="games">Games</h2><p data-copy="gamesIntro">The gaming corner is ready for our game projects.</p><div data-projects="games"></div><p class="empty-note" data-copy="gamesEmpty">Development placeholder. No game projects have been added to this prototype.</p><a class="static-close" href="#" data-copy="returnRoom">Back to the clubroom</a></section>
-<section id="tools" class="portfolio-section" aria-labelledby="tools-title"><p class="panel-location" data-copy="workbench">Equipment shelf</p><h2 id="tools-title" data-copy="toolsLong">Tools & open source</h2><p data-copy="toolsIntro">Explore our public repositories. Individual project entries can be added here later.</p><div data-projects="tools"></div><div class="channel-links" data-links="tools"><a href="https://github.com/Millennium-Robotics-Lab" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><p class="empty-note" data-copy="toolsEmpty">No individual tool projects have been added to this prototype.</p><a class="static-close" href="#" data-copy="returnRoom">Back to the clubroom</a></section>
+<section id="games" class="portfolio-section" aria-labelledby="games-title">
+  <h2 id="games-title">Games</h2>
+  <div class="games-empty">
+    <h3>No published game entries yet.</h3>
+    <p>Explore our public repositories and channels in the meantime.</p>
+  </div>
+  <div class="games-links" role="group" aria-label="Public work and channels">
+    <a href="https://github.com/Millennium-Robotics-Lab" target="_blank" rel="noopener noreferrer" aria-label="GitHub, opens in a new tab">GitHub</a>
+    <a href="https://www.youtube.com/@project-arisu" target="_blank" rel="noopener noreferrer" aria-label="YouTube, opens in a new tab">YouTube</a>
+    <a href="https://space.bilibili.com/1161124651" target="_blank" rel="noopener noreferrer" aria-label="Bilibili, opens in a new tab">Bilibili</a>
+    <a href="https://x.com/projectarisu" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter, opens in a new tab">X / Twitter</a>
+  </div>
+  <a class="static-close" href="#">Back to the clubroom</a>
+</section>
+<section id="tools" class="portfolio-section" aria-labelledby="tools-title">
+  <h2 id="tools-title">Tools &amp; open source</h2>
+  <p class="tools-intro">Explore our public code, creative tools, and experiments.</p>
+  <div class="tools-list">
+    <article class="tools-entry">
+      <h3>BlueCafe</h3>
+      <p class="tools-description">A desktop cafe layout editor built with Unity.</p>
+      <p class="tools-note">Game assets are supplied separately. No project-wide source license has been selected.</p>
+      <div class="tools-actions">
+        <a href="https://github.com/Millennium-Robotics-Lab/bluecafe" target="_blank" rel="noopener noreferrer">Source ↗</a>
+        <a href="https://github.com/Millennium-Robotics-Lab/bluecafe/releases" target="_blank" rel="noopener noreferrer">Downloads &amp; release notes ↗</a>
+        <a href="https://github.com/Millennium-Robotics-Lab/bluecafe#run" target="_blank" rel="noopener noreferrer">Documentation ↗</a>
+      </div>
+    </article>
+    <article class="tools-entry">
+      <h3>BlueOffice</h3>
+      <p class="tools-description">A planned local, game-like office for AI assistants.</p>
+      <p class="tools-note">The main branch is a project baseline, with no runnable app or product release.</p>
+      <div class="tools-actions">
+        <a href="https://github.com/Millennium-Robotics-Lab/blueoffice" target="_blank" rel="noopener noreferrer">Source ↗</a>
+        <a href="https://github.com/Millennium-Robotics-Lab/blueoffice#readme" target="_blank" rel="noopener noreferrer">Documentation ↗</a>
+      </div>
+    </article>
+    <article class="tools-entry">
+      <h3>momocord</h3>
+      <p class="tools-description">Our fork of U1805/momotalk, a Blue Archive-style chat generator.</p>
+      <div class="tools-actions">
+        <a href="https://github.com/Millennium-Robotics-Lab/momocord" target="_blank" rel="noopener noreferrer">Source ↗</a>
+        <a href="https://github.com/Millennium-Robotics-Lab/momocord/blob/main/docs/How-to-use.md" target="_blank" rel="noopener noreferrer">Documentation ↗</a>
+        <a href="https://github.com/U1805/momotalk" target="_blank" rel="noopener noreferrer">Upstream project ↗</a>
+      </div>
+    </article>
+  </div>
+  <p class="tools-all"><a href="https://github.com/Millennium-Robotics-Lab" target="_blank" rel="noopener noreferrer">All repositories on GitHub ↗</a></p>
+  <a class="static-close" href="#">Back to the clubroom</a>
+</section>
 <section id="about" class="portfolio-section" aria-labelledby="about-title"><p class="panel-location" data-copy="noticeboard">Club noticeboard</p><h2 id="about-title" data-copy="about">About</h2><p class="about-name">Millennium Robotics Lab<br><span lang="zh-Hans">千禧年机器人部</span> / MRL</p><p data-copy="aboutIntro">A shared home for our videos, games, tools, and experiments.</p><h3 data-copy="findUs">Find us</h3><div class="channel-links" data-links="about"><a href="https://www.youtube.com/@project-arisu" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a href="https://space.bilibili.com/1161124651" target="_blank" rel="noopener noreferrer">Bilibili ↗</a><a href="https://x.com/projectarisu" target="_blank" rel="noopener noreferrer">X / Twitter ↗</a><a href="https://github.com/Millennium-Robotics-Lab" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div><h3 data-copy="contact">Contact</h3><p data-copy="contactBody">Reach us through the social profiles above. A dedicated contact address has not been supplied.</p><p class="empty-note" data-copy="unofficial">An independent club homepage inspired by Blue Archive. Not affiliated with or endorsed by its rights holders.</p><a class="static-close" href="#" data-copy="returnRoom">Back to the clubroom</a></section>
 </div>
 

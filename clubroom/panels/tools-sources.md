@@ -21,7 +21,7 @@ No screenshots, game assets, remote embeds, fonts, or downloaded binaries are in
 
 Links use explicit fields: `sourceUrl`, `downloadUrl`, `documentationUrl`, and `upstreamUrl`. A legacy `url` is labeled “Project page”; it is not assumed to be source or a binary download. Duplicate destinations within one entry are omitted. Supply only verified links. Missing actions remain absent.
 
-A matching `id` (`bluecafe`, `blueoffice`, or `momocord`) or matching source URL merges an entry into the built-in selection. Other entries append. Merging does not mutate supplied data. To remove an inherited field, explicitly set it to `null`. Text uses `textContent`; unsafe URL schemes are omitted. Local relative links and HTTPS links are supported. Media fields are intentionally not rendered.
+The parent stores the initial selection in `portfolio.js` as `featuredTools`, separate from panel rendering. A matching `id` (`bluecafe`, `blueoffice`, or `momocord`) or matching source URL merges an entry into the built-in selection. Other entries append. Merging does not mutate supplied data. To remove an inherited field, explicitly set it to `null`. Text uses `textContent`; unsafe URL schemes are omitted. Local relative links and HTTPS links are supported. Media fields are intentionally not rendered.
 
 The supplied contract names `MRL_toolsS`. This checkout's `app.js` calls `MRL_PANELS`. The module registers the same renderer in both, without changing shared files. There is no `onOpen` hook or media request, so a direct-link open before initial render needs no initialization. All CSS selectors begin with `#tools`.
 
@@ -78,3 +78,7 @@ The current fallback still shows its placeholder. Parent can replace only the ex
 - Browser fixture checks passed: additional entries, ID override, repeated English/Chinese render without duplicates, rejected `javascript:` and `data:` links, literal HTML text, and unchanged sibling sections. Fixture content was not saved.
 - No panel images, videos, or iframes were mounted. No console errors appeared in the local rendering snapshot.
 - No physical-device testing, linked-app runtime testing, binary downloads, or reduced-motion emulation was performed. The panel introduces no motion and leaves shared motion behavior unchanged.
+
+## Parent integration
+
+The merged site uses only `MRL_PANELS`. Initial tool content lives in `portfolio.js` as `featuredTools`. The static Tools fallback and asset cache versions were updated during integration.

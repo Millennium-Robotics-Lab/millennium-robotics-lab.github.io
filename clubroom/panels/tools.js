@@ -20,45 +20,7 @@
   };
 
   // Verified public sources and extension fields are documented in tools-sources.md.
-  const selection = [
-    {
-      id: 'bluecafe', title: 'BlueCafe',
-      description: {
-        en: 'A desktop cafe layout editor built with Unity.',
-        zh: '使用 Unity 制作的桌面咖啡厅布局编辑器。'
-      },
-      note: {
-        en: 'Game assets are supplied separately. No project-wide source license has been selected.',
-        zh: '游戏素材需另行提供。项目尚未选定整体源代码许可证。'
-      },
-      sourceUrl: github + '/bluecafe',
-      downloadUrl: github + '/bluecafe/releases',
-      documentationUrl: github + '/bluecafe#run'
-    },
-    {
-      id: 'blueoffice', title: 'BlueOffice',
-      description: {
-        en: 'A planned local, game-like office for AI assistants.',
-        zh: '计划为 AI 助手打造的本地游戏式办公室。'
-      },
-      note: {
-        en: 'The main branch is a project baseline, with no runnable app or product release.',
-        zh: '主分支目前仅有项目基础结构，没有可运行的应用或产品发行版。'
-      },
-      sourceUrl: github + '/blueoffice',
-      documentationUrl: github + '/blueoffice#readme'
-    },
-    {
-      id: 'momocord', title: 'momocord',
-      description: {
-        en: 'Our fork of U1805/momotalk, a Blue Archive-style chat generator.',
-        zh: '我们从 U1805/momotalk 派生的仓库，用于生成《蔚蓝档案》风格的聊天。'
-      },
-      sourceUrl: github + '/momocord',
-      upstreamUrl: 'https://github.com/U1805/momotalk',
-      documentationUrl: github + '/momocord/blob/main/docs/How-to-use.md'
-    }
-  ];
+
 
   function localized(value, language) {
     if (typeof value === 'string') return value;
@@ -96,7 +58,7 @@
   }
 
   function projects(data) {
-    const items = selection.map(item => ({ ...item }));
+    const items = (data?.featuredTools || []).map(item => ({ ...item }));
     const additions = Array.isArray(data?.projects?.tools) ? data.projects.tools : [];
     for (const item of additions) {
       if (!item || typeof item !== 'object' || Array.isArray(item)) continue;
@@ -156,9 +118,6 @@
   }
 
   const panel = { render };
-  window.MRL_toolsS = window.MRL_toolsS || {};
-  window.MRL_toolsS.tools = panel;
-  // The shared app in this checkout uses MRL_PANELS. Keep both registration contracts working.
   window.MRL_PANELS = window.MRL_PANELS || {};
   window.MRL_PANELS.tools = panel;
 })();

@@ -76,3 +76,7 @@ Parent should replace only the existing Games section in `clubroom/index.html` w
 - Verified Tab wraps from the shared return control to Close. Escape closes the panel. After opening through navigation, focus returns to Games. Browser back closes the panel and forward reopens it.
 - Shared-preview click automation timed out on an image control. The isolated browser successfully activated it after scrolling. No test fixtures or screenshots were added to site data.
 - Did not test physical devices, run repository application builds, or validate unavailable channel content. No animation, device routing, shared room styling, or autoplay behavior was added or changed.
+
+## Parent integration
+
+The merged site uses only `MRL_PANELS`. The static Games fallback and asset cache versions were updated during integration.
