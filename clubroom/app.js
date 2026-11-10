@@ -126,6 +126,11 @@
  }
  if (typeof panel.showModal === 'function') {
   document.documentElement.classList.add('js');
+  document.querySelectorAll('[data-category="videos"]').forEach(link => {
+   for (const event of ['pointerenter', 'focus']) {
+    link.addEventListener(event, () => window.MRL_PANELS?.videos?.prepare?.(language));
+   }
+  });
   document.querySelectorAll('[data-category]').forEach(link => link.addEventListener('click', event => {
    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
    event.preventDefault(); returnFocus = link;

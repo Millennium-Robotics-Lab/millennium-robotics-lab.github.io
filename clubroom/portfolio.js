@@ -24,8 +24,7 @@ window.MRL_DATA = {
       id: 'nfxeo7wM8Xc',
       title: '【ブルアカ漫画】「ご主人様」呼びにニッコリなユウカと戸惑うケイ｜第246話・日本語ボイス付き',
       url: 'https://www.youtube.com/shorts/nfxeo7wM8Xc',
-      format: 'short',
-      poster: 'assets/youtube-featured.webp'
+      format: 'short'
     },
     bilibili: {
       id: 'BV1cNxs6TE8J',

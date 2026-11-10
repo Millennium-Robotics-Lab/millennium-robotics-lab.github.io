@@ -1,31 +1,26 @@
-# Featured videos
+# Featured videos and native embeds
 
-Checked 2026-11-10. Content is configured in `clubroom/portfolio.js`.
+Content is configured in `clubroom/portfolio.js`.
 
-- YouTube channel: https://www.youtube.com/@project-arisu , channel ID `UCMVoEs4AWxaBn-K3Un3XFhQ`.
-- Read the public `/videos` and `/shorts` listings with yt-dlp: 13 videos and 10 Shorts. Compared their listed view counts. The largest was Short `nfxeo7wM8Xc` (about 1.4K in the listing); the next Short was about 1.3K. The largest regular video had 52 listed views.
-- Selected URL: https://www.youtube.com/shorts/nfxeo7wM8Xc . A separate video-detail read through agent-reach verified the author as Millennium Robotics Lab, publication date 2026-11-09, duration 64 seconds, and 1,473 views at check time. Counts change; the interface does not display a permanent popularity ranking.
-- The Chinese card uses https://space.bilibili.com/1161124651 . The owner supplied https://www.bilibili.com/video/BV1cNxs6TE8J , titled `第257话：凯伊新素体`, as the most popular upload. The owner reported 3,666 views, 389 likes, 320 favorites and 10 comments from 2026-11-10 09:09 Beijing time. These counts were not independently verified and are not displayed. Live upload-list access was unavailable (HTTP 412); no further ranking check was attempted.
+## Selected media
 
-English shows only the YouTube card. Simplified Chinese shows only the Bilibili card. This selection uses the language setting, not country detection. All profiles remain available in About.
+- YouTube: https://www.youtube.com/@project-arisu , channel ID `UCMVoEs4AWxaBn-K3Un3XFhQ`. On 2026-11-10 the public listings contained 13 videos and 10 Shorts. `nfxeo7wM8Xc` had the largest listed count, about 1.4K, followed by a Short at about 1.3K. The largest regular video had 52 listed views.
+- Selected YouTube URL: https://www.youtube.com/shorts/nfxeo7wM8Xc . A video-detail read through agent-reach confirmed Millennium Robotics Lab as author, publication date 2026-11-09, duration 64 seconds, and 1,473 views at check time. These counts change and are not displayed as permanent rankings.
+- Bilibili: https://space.bilibili.com/1161124651 . The owner supplied https://www.bilibili.com/video/BV1cNxs6TE8J , `第257话：凯伊新素体`, as the most popular upload. The owner reported 3,666 views, 389 likes, 320 favorites and 10 comments from 2026-11-10 09:09 Beijing time. Those counts were not independently verified and are not displayed. Public upload-list access returned HTTP 412.
 
-The Bilibili player mounts when Videos opens. YouTube mounts after the visitor selects Load video. Autoplay is disabled. Closing removes the iframe. The page includes one local YouTube thumbnail, with provenance below, and no video or audio files. Original media rights remain with their owners.
+English shows YouTube. Simplified Chinese shows Bilibili. This uses the language setting, not country detection. All profiles remain available in About.
 
-## Blank-player correction
+## Loading correction
 
-The old renderer mounted an iframe immediately and treated its presence as success. A blocked or stalled third-party request left an empty dark rectangle. The regression test exercises provider error callbacks, an iframe that has not reported readiness, and readiness arriving after the former 10-second cutoff.
+The removed custom loader required a second Load action, downloaded `iframe_api` and then `www-widgetapi.js` before creating an iframe, and hid the iframe until an API callback arrived. Changing its timeouts did not remove those dependencies. The implementation now inserts a visible standard `https://www.youtube.com/embed/VIDEO_ID` iframe immediately when Videos opens. There is no parent-page YouTube script, custom overlay, callback gate, or loading timer. Referrer policy is set before navigation. Hovering or focusing Videos warms the YouTube and thumbnail-host connections without downloading portfolio media. Closing removes the iframe and stops playback.
 
-YouTube now uses its official IFrame Player API (`https://www.youtube.com/iframe_api`) and standard embed host. The local preview remains visible until `onReady`; API and player errors restore recovery controls. A slow-loading notice does not cancel the pending request or destroy the iframe. An iframe `load` event is not used as a readiness signal. The player starts loading only after “Load video” is selected, with autoplay disabled. The direct video link is always available. Closing cancels timers, destroys the player, and ignores late completion.
+Autoplay remains disabled. Media is requested when Videos opens, not during room initialization. The iframe uses `enablejsapi=1` with the exact page origin, allowing browser QA to read player state without a parent API script; no production readiness callback controls visibility. YouTube supplies its own player controls and native error display. A direct video link remains available.
 
-API reference: https://developers.google.com/youtube/iframe_api_reference . Player parameters: https://developers.google.com/youtube/player_parameters . The UI uses a landscape player viewport with a minimum height of 200 CSS pixels.
+Reference: https://developers.google.com/youtube/player_parameters . No video, audio, or thumbnail file is bundled. The former local thumbnail was removed. Original media remains on the respective platforms and belongs to its rights holders.
 
-`clubroom/assets/youtube-featured.webp` is the original thumbnail downloaded by yt-dlp for `nfxeo7wM8Xc` on 2026-11-10, unchanged, approximately 75 KB. It is served locally when Videos opens. Media rights remain with their owners; caching the thumbnail does not grant rights to its underlying Blue Archive imagery. No video or audio file is included.
+## Verification
 
-Local browser verification observed YouTube readiness, manual playback at state `1` and time `33.18` seconds, followed by completion at `63.641` seconds. This verifies playback in the test browser, not connectivity in every visitor's environment. Provider error recovery and delayed readiness are tested separately.
-
-
-## Slow-readiness correction
-
-The previous implementation rejected API loading after 8 seconds and destroyed the player after 10 seconds. The regression test failed with `SLOW_PLAYER_CANCELLED` when a provider delivered readiness after 12 seconds. Those hard cutoffs are removed. After 10 seconds the page shows a slow-loading notice and enables Retry while the current request remains valid. Only a provider error, an explicit Retry, a language/category change, or closing ends that player session. Retry explicitly restarts any pending API script. Provider error codes remain in the player element's `data-error` attribute, without being exposed as UI copy.
-
-The shared browser loaded the real YouTube player with its readiness callback deliberately delayed by 12 seconds. It reached the visible ready state at 14,214 milliseconds. This confirms that the actual iframe survives the old cutoff. The automated test covers the same late-readiness pattern and provider error 150 with controlled callbacks; it makes no claim about every visitor's network connectivity.
+- The new lifecycle regression failed on the custom loader with `EXTRA_LOADING_GATE`: opening Videos did not start an iframe. It passes on the native embed, including visible iframe configuration, absence of the parent API script and custom button, close cleanup, and Chinese selection.
+- A direct YouTube embed on the actual public page reported readiness at 3,771 ms in the test browser, with no parent API scripts. This is a single browser measurement, not a guarantee for other networks or a controlled before/after benchmark.
+- Test-time probes are not included in the deployed application. The regression uses the real panel implementation and does not replace YouTube with a fake player or treat a synthetic callback as playback evidence.
+- Actual native-player verification in an isolated browser: clicked YouTube's own Play button, observed buffering state `3`, then playing state `1` with current time `13.262852` seconds. The parent document loaded zero YouTube API scripts. No synthetic player callback was used for that check.
