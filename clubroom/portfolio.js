@@ -26,7 +26,12 @@ window.MRL_DATA = {
       url: 'https://www.youtube.com/shorts/nfxeo7wM8Xc',
       format: 'short'
     },
-    bilibili: null
+    bilibili: {
+      id: 'BV1cNxs6TE8J',
+      title: '第257话：凯伊新素体',
+      url: 'https://www.bilibili.com/video/BV1cNxs6TE8J',
+      format: 'video'
+    }
   },
   projects: { videos: [], games: [], tools: [] },
   links: {
