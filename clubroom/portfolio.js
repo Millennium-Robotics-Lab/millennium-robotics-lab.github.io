@@ -4,6 +4,8 @@ window.MRL_DATA = {
   featuredTools: [
     {
       id: 'bluex', title: 'BlueX',
+      image: 'assets/portfolio/bluex.webp',
+      imageAlt: { en: 'BlueX theme shown in its published X demo.', zh: '公开演示视频中的 BlueX 主题界面。' },
       description: {
         en: 'An unofficial Blue Archive theme for X (Twitter), installed with Stylus.',
         zh: '通过 Stylus 安装的非官方《蔚蓝档案》风格 X（Twitter）主题。'
@@ -28,20 +30,24 @@ window.MRL_DATA = {
       sourceUrl: 'https://github.com/Millennium-Robotics-Lab' + '/bluecafe',
       downloadUrl: 'https://github.com/Millennium-Robotics-Lab' + '/bluecafe/releases',
       documentationUrl: 'https://github.com/Millennium-Robotics-Lab' + '/bluecafe#run',
-      image: 'assets/bluecafe-screenshot.png',
+      image: 'assets/portfolio/bluecafe.webp',
       imageAlt: { en: 'BlueCafe editor with furniture catalog and a selected gaming area in a cafe layout.', zh: 'BlueCafe 编辑器：家具目录与咖啡厅布局中选中的游戏区。' }
     }
   ],
   featuredVideos: {
     youtube: {
       id: 'nfxeo7wM8Xc',
-      title: '【ブルアカ漫画】「ご主人様」呼びにニッコリなユウカと戸惑うケイ｜第246話・日本語ボイス付き',
+      title: { en: 'Manga animation · Episode 246', zh: '漫画动画 · 第246话' },
+      image: 'assets/portfolio/manga-246.webp',
+      imageAlt: { en: 'Original thumbnail of the episode 246 Japanese video.', zh: '第246话日语视频的原始封面。' },
       url: 'https://www.youtube.com/shorts/nfxeo7wM8Xc',
       format: 'short'
     },
     bilibili: {
       id: 'BV1cNxs6TE8J',
-      title: '第257话：凯伊新素体',
+      title: { en: 'Manga animation · Episode 257', zh: '漫画动画 · 第257话：凯伊新素体' },
+      image: 'assets/portfolio/manga-257.webp',
+      imageAlt: { en: 'Original Bilibili thumbnail of episode 257.', zh: '第257话哔哩哔哩视频的原始封面。' },
       url: 'https://www.bilibili.com/video/BV1cNxs6TE8J',
       format: 'video'
     }
@@ -50,6 +56,8 @@ window.MRL_DATA = {
     videos: [
       {
         id: 'manga-animation-global-264',
+        image: 'assets/portfolio/manga-264.webp',
+        imageAlt: { en: 'Original thumbnail of the episode 264 Japanese video.', zh: '第264话日语视频的原始封面。' },
         title: { en: 'Manga animation · Global episode 264', zh: '漫画动画 · 国际服第 264 话' },
         links: [
           { label: { en: 'CN · Bilibili video', zh: '中文 · 哔哩哔哩视频' }, url: 'https://www.bilibili.com/video/BV1MmWC6YEmx/' },
