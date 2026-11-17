@@ -5,6 +5,7 @@
     en: {
       title: 'Tools & open source',
 
+      install: 'Install theme', demo: 'Demo video', announcement: 'Launch post',
       source: 'Source', download: 'Downloads & release notes', docs: 'Documentation',
       upstream: 'Upstream project', project: 'Project page', all: 'All repositories on GitHub',
       return: 'Back to the clubroom', newTab: 'opens in a new tab'
@@ -12,6 +13,7 @@
     zh: {
       title: '工具与开源项目',
 
+      install: '安装主题', demo: '演示视频', announcement: '发布动态',
       source: '源代码', download: '下载与发行说明', docs: '使用文档',
       upstream: '上游项目', project: '项目页面', all: '在 GitHub 查看全部仓库',
       return: '返回部室', newTab: '在新标签页打开'
@@ -97,10 +99,11 @@
       const actions = element('div', 'tools-actions');
       const urls = new Set();
       for (const [field, label] of [
+        ['installUrl', text.install], ['demoUrl', text.demo], ['announcementUrl', text.announcement],
         ['sourceUrl', text.source], ['downloadUrl', text.download],
         ['documentationUrl', text.docs], ['upstreamUrl', text.upstream], ['url', text.project]
       ]) {
-        const anchor = link(project[field], label, title, text);
+        const anchor = link(localized(project[field], lang), label, title, text);
         if (anchor && !urls.has(anchor.href)) {
           urls.add(anchor.href);
           actions.append(anchor);

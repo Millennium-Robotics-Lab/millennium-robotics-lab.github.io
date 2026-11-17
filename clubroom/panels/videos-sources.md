@@ -24,3 +24,15 @@ Reference: https://developers.google.com/youtube/player_parameters . No video, a
 - A direct YouTube embed on the actual public page reported readiness at 3,771 ms in the test browser, with no parent API scripts. This is a single browser measurement, not a guarantee for other networks or a controlled before/after benchmark.
 - Test-time probes are not included in the deployed application. The regression uses the real panel implementation and does not replace YouTube with a fake player or treat a synthetic callback as playback evidence.
 - Actual native-player verification in an isolated browser: clicked YouTube's own Play button, observed buffering state `3`, then playing state `1` with current time `13.262852` seconds. The parent document loaded zero YouTube API scripts. No synthetic player callback was used for that check.
+
+
+## Global manga animation, episode 264, added 2026-11-17
+
+The owner supplied this new portfolio entry and its exact destinations:
+
+- Chinese Bilibili video: https://www.bilibili.com/video/BV1MmWC6YEmx/
+- English video reply on X: https://x.com/projectarisu/status/2121432139111748059
+- Japanese short post on X: https://x.com/projectarisu/status/2121433136890532176
+- Japanese YouTube Short: https://www.youtube.com/shorts/wQ8USDfF8OI
+
+The entry appears above the existing featured player in both interface languages. All four links remain available and their language/platform labels are translated. No title, view count, thumbnail, or description was inferred from inaccessible platform content. This addition does not replace the existing featured media or add another automatic player download. No X widget or third-party script is added.

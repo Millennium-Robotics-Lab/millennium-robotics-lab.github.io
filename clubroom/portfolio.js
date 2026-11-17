@@ -3,6 +3,19 @@ window.MRL_DATA = {
   schemaVersion: 1,
   featuredTools: [
     {
+      id: 'bluex', title: 'BlueX',
+      description: {
+        en: 'An unofficial Blue Archive theme for X (Twitter), installed with Stylus.',
+        zh: '通过 Stylus 安装的非官方《蔚蓝档案》风格 X（Twitter）主题。'
+      },
+      installUrl: 'https://userstyles.world/style/31517/blue-archive-schale-for-x',
+      demoUrl: {
+        en: 'https://www.youtube.com/watch?v=kUbBWjOyO1Y',
+        zh: 'https://www.bilibili.com/video/BV1uJsA6WEi8/'
+      },
+      announcementUrl: 'https://x.com/projectarisu/status/2122297137480511861'
+    },
+    {
       id: 'bluecafe', title: 'BlueCafe',
       description: {
         en: 'A desktop cafe layout editor built with Unity.',
@@ -33,7 +46,21 @@ window.MRL_DATA = {
       format: 'video'
     }
   },
-  projects: { videos: [], games: [], tools: [] },
+  projects: {
+    videos: [
+      {
+        id: 'manga-animation-global-264',
+        title: { en: 'Manga animation · Global episode 264', zh: '漫画动画 · 国际服第 264 话' },
+        links: [
+          { label: { en: 'CN · Bilibili video', zh: '中文 · 哔哩哔哩视频' }, url: 'https://www.bilibili.com/video/BV1MmWC6YEmx/' },
+          { label: { en: 'EN · Video reply on X', zh: '英文 · X 视频回复' }, url: 'https://x.com/projectarisu/status/2121432139111748059' },
+          { label: { en: 'JP · Short post on X', zh: '日文 · X 短视频动态' }, url: 'https://x.com/projectarisu/status/2121433136890532176' },
+          { label: { en: 'JP · YouTube Short', zh: '日文 · YouTube Shorts' }, url: 'https://www.youtube.com/shorts/wQ8USDfF8OI' }
+        ]
+      }
+    ],
+    games: [], tools: []
+  },
   links: {
     youtube: { label: 'YouTube', url: 'https://www.youtube.com/@project-arisu' },
     bilibili: { label: 'Bilibili', url: 'https://space.bilibili.com/1161124651' },

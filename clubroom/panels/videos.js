@@ -34,6 +34,20 @@
     const platform = lang === 'zh' ? 'bilibili' : 'youtube';
     const video = data.featuredVideos?.[platform];
     const title = node('h2', text.title); title.id = 'videos-title';
+    const projects = node('div', '', 'videos-projects');
+    const localized = value => typeof value === 'string' ? value : value?.[lang] || value?.en || '';
+    for (const project of data.projects?.videos || []) {
+      const entry = node('article', '', 'videos-project');
+      entry.append(node('h3', localized(project.title)));
+      const links = node('div', '', 'videos-project-links');
+      for (const item of project.links || []) {
+        try {
+          const url = new URL(item.url);
+          if (url.protocol === 'https:') links.append(link(url.href, localized(item.label) + ' ↗'));
+        } catch { /* Omit invalid portfolio destinations. */ }
+      }
+      entry.append(links); projects.append(entry);
+    }
     const card = node('article', '', 'videos-card');
     const header = node('div', '', 'videos-card-header');
     const icon = document.createElement('img');
@@ -46,7 +60,7 @@
       card.append(player, node('p', video.title, 'videos-title'), watch);
     }
     const back = link('#', text.back); back.removeAttribute('target'); back.className = 'static-close';
-    section.setAttribute('aria-labelledby', title.id); section.replaceChildren(title, card, back);
+    section.setAttribute('aria-labelledby', title.id); section.replaceChildren(title, projects, card, back);
   }
   function onOpen(section, language, data) {
     const player = section.querySelector('.videos-player');

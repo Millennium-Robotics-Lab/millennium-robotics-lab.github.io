@@ -8,3 +8,8 @@
 #videos .videos-title { font-size: 14px; line-height: 1.65; overflow-wrap: anywhere; }
 #videos .videos-external { display: inline-block; min-height: 44px; padding: 10px 0; }
 #videos a { text-underline-offset: 4px; }
+
+#videos .videos-project { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+#videos .videos-project h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.5; }
+#videos .videos-project-links { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+#videos .videos-project-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
