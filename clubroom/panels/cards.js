@@ -31,9 +31,10 @@
       const card = node('article', '', 'mrl-card');
       const media = url(localized(item.image, language), true);
       if (media) {
-        const visual = links.length ? external(links[0].href, '', name, language) : node('div');
+        const primary = url(localized(item.url, language)) || links[0]?.href;
+        const visual = primary ? external(primary, '', name, language) : node('div');
         visual.className = 'mrl-card-visual';
-        if (links.length) visual.setAttribute('aria-label', name + ', ' + (language === 'zh' ? '打开作品，在新标签页打开' : 'open project in a new tab'));
+        if (primary) visual.setAttribute('aria-label', name + ', ' + (language === 'zh' ? '打开作品，在新标签页打开' : 'open project in a new tab'));
         const image = document.createElement('img');
         image.dataset.source = localized(item.image, language);
         image.alt = localized(item.imageAlt, language) || name;

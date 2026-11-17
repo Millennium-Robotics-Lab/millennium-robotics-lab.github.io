@@ -37,6 +37,8 @@ test('Tools and Videos use image cards without third-party players or requests',
           }
           if(id==='videos'){
             if(cards[0].querySelectorAll('.mrl-card-links a').length!==4)throw Error('Episode 264 links lost');
+            const primary=cards[0].querySelector('.mrl-card-visual').href;
+            if(!primary.includes(language?'BV1MmWC6YEmx':'2121432139111748059'))throw Error('Thumbnail opens the wrong language');
             if(!section.textContent.includes('264'))throw Error('Episode 264 missing');
           }else if(!cards[0].textContent.includes('BlueX'))throw Error('BlueX missing');
           if(document.querySelector('iframe,video,audio'))throw Error('Media embed is still mounted');

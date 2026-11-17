@@ -56,6 +56,7 @@ window.MRL_DATA = {
     videos: [
       {
         id: 'manga-animation-global-264',
+        url: { en: 'https://x.com/projectarisu/status/2121432139111748059', zh: 'https://www.bilibili.com/video/BV1MmWC6YEmx/' },
         image: 'assets/portfolio/manga-264.webp',
         imageAlt: { en: 'Original thumbnail of the episode 264 Japanese video.', zh: '第264话日语视频的原始封面。' },
         title: { en: 'Manga animation · Global episode 264', zh: '漫画动画 · 国际服第 264 话' },
