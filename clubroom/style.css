@@ -138,3 +138,5 @@ dialog { transform-origin: center; }
 .page-hidden * { animation-play-state: paused !important; }
 .reduced-motion .hotspot::before, .reduced-motion .hotspot::after, .reduced-motion .hotspot-label { transition: none !important; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+
+html[lang^="zh"] a[data-language="en"], html[lang="en"] a[data-language="zh"] { display: none !important; }

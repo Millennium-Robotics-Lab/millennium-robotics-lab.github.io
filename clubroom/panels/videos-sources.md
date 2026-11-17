@@ -11,7 +11,7 @@ The owner supplied all four links for manga animation, Global episode 264:
 - Japanese short post on X: https://x.com/projectarisu/status/2121433136890532176
 - Japanese YouTube Short: https://www.youtube.com/shorts/wQ8USDfF8OI
 
-All four remain on the episode card in both interface languages. The existing language-specific video is another card in the same list: Japanese episode 246 (`nfxeo7wM8Xc`) in English, Chinese episode 257 (`BV1cNxs6TE8J`) in Chinese. No engagement counts or live popularity claims are displayed.
+All four are retained in portfolio data. The English card shows the English/Japanese X and YouTube links. The Chinese card shows only the Chinese Bilibili link. The existing language-specific video is another card in the same list: Japanese episode 246 (`nfxeo7wM8Xc`) in English, Chinese episode 257 (`BV1cNxs6TE8J`) in Chinese. No engagement counts or live popularity claims are displayed.
 
 ## Images
 
@@ -26,3 +26,8 @@ The originals remain owned by their respective rights holders. These small portf
 ## Checks
 
 `tests/portfolio-cards.test.cjs` opens both Tools and Videos in English and Chinese. It requires every entry to use the same card structure with a decodable local image, title, and links. It checks all four episode links remain, closing restores focus, and no embeds or third-party resource requests occur. This replaces the obsolete embed tests; it does not simulate successful video playback.
+
+
+## Language policy
+
+`link-policy.js` centrally filters visible links, including thumbnail destinations. Chinese excludes overseas social/video platforms while retaining Bilibili and technical project/install destinations such as GitHub and Userstyles. English excludes Bilibili and its short links. No country detection is used. About and the original mobile page follow the same policy. The English static fallback has no Bilibili anchors; saved language is applied before paint to prevent the other language's platform links flashing during startup.

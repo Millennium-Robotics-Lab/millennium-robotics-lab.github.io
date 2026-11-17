@@ -45,6 +45,7 @@
    const links = element('ul', '', 'about-profiles');
    links.setAttribute('aria-labelledby', heading.id);
    profiles.forEach(([name, url, handle], index) => {
+    if (!window.MRL_LINKS.allows(url, language)) return;
     const item = element('li');
     const link = element('a');
     link.href = url;

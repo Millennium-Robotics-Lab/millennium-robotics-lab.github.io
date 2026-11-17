@@ -26,6 +26,15 @@ test('Tools and Videos use image cards without third-party players or requests',
       const wait=ms=>new Promise(r=>setTimeout(r,ms));
       for(let language=0;language<2;language++){
         if(language)document.querySelector('#language').click();
+        const aboutTrigger=document.querySelector('nav [data-category="about"]');aboutTrigger.click();
+        const profiles=[...document.querySelectorAll('#about .about-profiles a')].map(a=>new URL(a.href).hostname);
+        if(JSON.stringify(profiles)!==JSON.stringify(language?['space.bilibili.com','github.com']:['www.youtube.com','x.com','github.com']))throw Error('Wrong About platforms: '+profiles);
+        document.querySelector('#return-room').click();await wait(100);
+        for(const anchor of document.querySelectorAll('a[href]')){
+          const url=new URL(anchor.href);if(url.origin===location.origin)continue;
+          if(language&&!['www.bilibili.com','space.bilibili.com','github.com','userstyles.world'].includes(url.hostname))throw Error('Foreign platform in Chinese: '+anchor.href);
+          if(!language&&(/bilibili\.com$/.test(url.hostname)||url.hostname==='b23.tv'))throw Error('Bilibili in English');
+        }
         for(const id of ['tools','videos']){
           const trigger=document.querySelector('nav [data-category="'+id+'"]');trigger.click();
           const section=document.querySelector('#'+id),cards=[...section.querySelectorAll('article')];
@@ -36,7 +45,7 @@ test('Tools and Videos use image cards without third-party players or requests',
             if(!card.querySelector('h3')||!card.querySelector('.mrl-card-links a'))throw Error('Card lacks title or links');
           }
           if(id==='videos'){
-            if(cards[0].querySelectorAll('.mrl-card-links a').length!==4)throw Error('Episode 264 links lost');
+            if(cards[0].querySelectorAll('.mrl-card-links a').length!==(language?1:3))throw Error('Wrong episode link selection');
             const primary=cards[0].querySelector('.mrl-card-visual').href;
             if(!primary.includes(language?'BV1MmWC6YEmx':'2121432139111748059'))throw Error('Thumbnail opens the wrong language');
             if(!section.textContent.includes('264'))throw Error('Episode 264 missing');

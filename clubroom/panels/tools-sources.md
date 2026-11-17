@@ -22,3 +22,8 @@ The local BlueX README marks development screenshots as private. None were copie
 - Thumbnail `assets/portfolio/bluecafe.webp`: resized from the existing published `assets/bluecafe-screenshot.png`. The original was copied from the user's actual editor capture `evidence/standalone-ui-fix-2026-10-10/build-final.png`. It is not the design mockup. The 1600×1000 capture was resized to fit 640×360 without cropping and compressed as WebP quality 82. It documents the captured build, not a promised V2 release.
 
 The screenshot contains Blue Archive furniture. Game content remains with its rights holders. No model, texture, character, or asset library is included. The theme-demo thumbnail likewise preserves its original content and does not transfer rights to artwork shown in it. Images load when a panel opens; no video platform widgets or media are requested.
+
+
+## Language policy
+
+In Chinese, BlueX keeps its Userstyles install link and Bilibili demo, and omits its X launch link. In English it keeps the install, YouTube demo, and X launch links, and has no Bilibili link. BlueCafe's GitHub destinations remain in both languages. Filtering is centralized in `link-policy.js` and also checks thumbnail destinations.

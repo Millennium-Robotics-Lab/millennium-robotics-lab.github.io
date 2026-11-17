@@ -27,11 +27,12 @@
     for (const item of items) {
       const name = localized(item.title, language);
       if (!name) continue;
-      const links = (item.links || []).map(link => ({ href: url(localized(link.url, language)), label: localized(link.label, language) })).filter(link => link.href && link.label);
+      const links = (item.links || []).map(link => ({ href: url(localized(link.url, language)), label: localized(link.label, language) })).filter(link => link.href && link.label && window.MRL_LINKS.allows(link.href, language));
       const card = node('article', '', 'mrl-card');
       const media = url(localized(item.image, language), true);
       if (media) {
-        const primary = url(localized(item.url, language)) || links[0]?.href;
+        const preferred = url(localized(item.url, language));
+        const primary = preferred && window.MRL_LINKS.allows(preferred, language) ? preferred : links[0]?.href;
         const visual = primary ? external(primary, '', name, language) : node('div');
         visual.className = 'mrl-card-visual';
         if (primary) visual.setAttribute('aria-label', name + ', ' + (language === 'zh' ? '打开作品，在新标签页打开' : 'open project in a new tab'));

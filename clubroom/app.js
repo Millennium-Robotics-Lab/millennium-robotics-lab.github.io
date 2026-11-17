@@ -26,6 +26,7 @@
    const url = new URL(value, location.href);
    if (url.protocol !== 'https:' && !(url.origin === location.origin && url.protocol === location.protocol)) return null;
    if (media && url.origin !== location.origin) return null;
+   if (!media && !window.MRL_LINKS.allows(url.href, language)) return null;
    return url;
   } catch { return null; }
  }
