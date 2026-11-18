@@ -3,6 +3,7 @@
  const copy = {
   en: {
    title: 'About',
+   credits: 'Credits', cursorCredit: 'Arisu cursor artwork: ben404. Used with permission.',
    profiles: 'Find us', newTab: 'opens in a new tab',
    note: 'This is an independent homepage inspired by Blue Archive. MRL is not affiliated with or endorsed by its rights holders.',
    back: 'Back to the clubroom',
@@ -10,6 +11,7 @@
   },
   zh: {
    title: '关于',
+   credits: '鸣谢', cursorCredit: '爱丽丝鼠标指针：ben404。已获授权使用。',
    profiles: '找到我们', newTab: '在新标签页打开',
    note: '这是受《蔚蓝档案》启发的独立主页。MRL 与其权利人无隶属关系，亦未获其背书。',
    back: '返回部室',
@@ -70,7 +72,7 @@
    const back = element('a', t.back, 'static-close');
    back.href = '#';
    section.setAttribute('aria-labelledby', title.id);
-   section.replaceChildren(title, brand, heading, links, element('p', t.note, 'about-unofficial'), back);
+   section.replaceChildren(title, brand, heading, links, element('h3', t.credits), element('p', t.cursorCredit, 'about-credits'), element('p', t.note, 'about-unofficial'), back);
   }
  };
  window.MRL_PANELS = window.MRL_PANELS || {};

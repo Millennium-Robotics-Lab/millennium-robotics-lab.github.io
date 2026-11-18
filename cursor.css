@@ -1,0 +1,29 @@
+/* Cursor URLs resolve relative to this shared stylesheet on both pages. */
+@media (any-hover: hover) and (any-pointer: fine) {
+  html,
+  body {
+    cursor: url("assets/cursors/default.png") 1 1, auto;
+  }
+
+  a[href],
+  button,
+  [role="button"],
+  summary,
+  label[for],
+  select {
+    cursor: url("assets/cursors/pointer.png") 4 1, pointer;
+  }
+
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: url("assets/cursors/text.png") 3 8, text;
+  }
+
+  button:disabled,
+  input:disabled,
+  select:disabled,
+  textarea:disabled {
+    cursor: not-allowed;
+  }
+}

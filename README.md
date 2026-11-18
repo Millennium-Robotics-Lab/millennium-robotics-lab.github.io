@@ -23,6 +23,10 @@ The desktop Tools control is on the middle shelf. Furniture labels and hover are
 
 ## Check locally
 
+Both pages load `cursor.css` for static Arisu cursors with mouse input.
+See `assets/cursors/README.md` for the source, click positions, and replacement
+instructions. The About page credits ben404 for the cursor artwork.
+
 ```sh
 node --test tests/device-routing.test.cjs
 uv run --no-project python -m http.server 4173 --bind 127.0.0.1
