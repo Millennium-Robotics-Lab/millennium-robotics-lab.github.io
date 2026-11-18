@@ -16,8 +16,7 @@
   panelEntrance = null;
  }
  const sections = Object.fromEntries(categories.map(id => [id, document.getElementById(id)]));
- let language = 'en', imageFailed = false, current = null, returnFocus = null, localEntry = false;
- try { language = localStorage.getItem('mrl-language') === 'zh' ? 'zh' : 'en'; } catch { /* Storage is optional. */ }
+ let language = window.MRL_LANGUAGE.saved(), imageFailed = false, current = null, returnFocus = null, localEntry = false;
  const text = key => window.MRL_COPY[language][key];
  const localized = value => typeof value === 'string' ? value : value?.[language] || value?.en || '';
  function safeURL(value, media = false) {
@@ -57,12 +56,12 @@
   });
  }
  function applyLanguage() {
-  document.documentElement.lang = language === 'zh' ? 'zh-Hans' : 'en';
+  window.MRL_LANGUAGE.apply(language);
+  document.title = language === 'ja' ? '部室 | ミレニアムロボット部' : 'Clubroom | Millennium Robotics Lab / 千禧年机器人部';
   document.querySelectorAll('[data-copy]').forEach(node => { if (text(node.dataset.copy)) node.textContent = text(node.dataset.copy); });
   document.querySelectorAll('[data-copy-aria]').forEach(node => node.setAttribute('aria-label', text(node.dataset.copyAria)));
   document.querySelectorAll('[data-copy-alt]').forEach(node => { node.alt = text(node.dataset.copyAlt); });
-  languageButton.textContent = language === 'en' ? '中文' : 'English';
-  languageButton.setAttribute('aria-label', language === 'en' ? '切换到中文' : 'Switch to English');
+  window.MRL_LANGUAGE.button(languageButton, language);
   document.querySelectorAll('[data-links]').forEach(container => {
    container.replaceChildren();
    for (const key of window.MRL_DATA.categories[container.dataset.links]) {
@@ -84,7 +83,7 @@
  function failImage() { imageFailed = true; updateArtwork(); }
  image.addEventListener('error', failImage);
  if (image.complete && !image.naturalWidth) failImage();
- languageButton.addEventListener('click', () => { language = language === 'en' ? 'zh' : 'en'; try { localStorage.setItem('mrl-language', language); } catch { /* Storage is optional. */ } applyLanguage(); });
+ languageButton.addEventListener('click', () => { language = window.MRL_LANGUAGE.next(language); window.MRL_LANGUAGE.save(language); applyLanguage(); });
  function categoryFromHash() { const key = location.hash.slice(1); return categories.includes(key) ? key : null; }
  function hidePanel() {
   if (!current) return;

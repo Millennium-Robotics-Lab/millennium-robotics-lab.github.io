@@ -18,7 +18,7 @@
   function external(href, label, title, language) {
     const anchor = node('a', label);
     anchor.href = href; anchor.target = '_blank'; anchor.rel = 'noopener noreferrer';
-    anchor.setAttribute('aria-label', title + ': ' + label + ', ' + (language === 'zh' ? '在新标签页打开' : 'opens in a new tab'));
+    anchor.setAttribute('aria-label', title + ': ' + label + ', ' + window.MRL_COPY[language].newTab);
     return anchor;
   }
   function render(section, language, title, items) {
@@ -35,7 +35,7 @@
         const primary = preferred && window.MRL_LINKS.allows(preferred, language) ? preferred : links[0]?.href;
         const visual = primary ? external(primary, '', name, language) : node('div');
         visual.className = 'mrl-card-visual';
-        if (primary) visual.setAttribute('aria-label', name + ', ' + (language === 'zh' ? '打开作品，在新标签页打开' : 'open project in a new tab'));
+        if (primary) visual.setAttribute('aria-label', name + ', ' + window.MRL_COPY[language].openProject);
         const image = document.createElement('img');
         image.dataset.source = localized(item.image, language);
         image.alt = localized(item.imageAlt, language) || name;
@@ -52,7 +52,7 @@
       for (const link of links) actions.append(external(link.href, link.label + ' ↗', name, language));
       body.append(actions); card.append(body); list.append(card);
     }
-    const back = node('a', language === 'zh' ? '返回部室' : 'Back to the clubroom', 'static-close'); back.href = '#';
+    const back = node('a', window.MRL_COPY[language].returnRoom, 'static-close'); back.href = '#';
     section.setAttribute('aria-labelledby', heading.id); section.replaceChildren(heading, list, back);
   }
   function onOpen(section) {

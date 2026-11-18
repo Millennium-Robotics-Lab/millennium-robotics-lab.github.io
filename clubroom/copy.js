@@ -1,8 +1,61 @@
 window.MRL_COPY = {
  en: {
-  skip:'Skip to our work', navigation:'Portfolio', videos:'Videos', games:'Games', tools:'Tools', about:'About', welcome:'The clubroom is open', subtitle:'A little room for the things we make.', invitation:'Take a look around.\nPick a corner. See what we’re working on.', roomTitle:'Our corner of Millennium', simpleView:'Simple view', roomView:'Room view', prototype:'Local prototype', areas:'Clubroom areas', roomAlt:'Game Development Department room illustration, with shelves of games and equipment, a central television, consoles on the floor, and a whiteboard.', simpleTitle:'Same club. A simpler view.', simpleBody:'Artwork unavailable. Use the navigation to explore our work.', screening:'Screening corner', gaming:'One more round?', workbench:'Equipment shelf', noticeboard:'Club noticeboard', toolsLong:'Tools & open source', aboutLong:'About & contact', roomCaption:'Make something. Leave the snacks.', hint:'Choose an area in the room, or use the navigation above.', fixedView:'Room art: Blue Archive', videosIntro:'Pull up a seat. Find our published videos on these channels.', gamesIntro:'The gaming corner is ready for our game projects.', gamesEmpty:'Development placeholder. No game projects have been added to this prototype.', toolsIntro:'Explore our public repositories. Individual project entries can be added here later.', toolsEmpty:'No individual tool projects have been added to this prototype.', aboutIntro:'A shared home for our videos, games, tools, and experiments.', findUs:'Find us', contact:'Contact', contactBody:'Reach us through the social profiles above. A dedicated contact address has not been supplied.', unofficial:'An independent club homepage inspired by Blue Archive. Not affiliated with or endorsed by its rights holders.', currentHome:'Current homepage', footerNote:'A small room. Plenty of ideas.', clubPortfolio:'Club portfolio', close:'Close panel', returnRoom:'Back to the clubroom', escape:'Esc to close', newTab:'opens in a new tab', projectLink:'Explore project', development:'Development placeholder', media:'Load project image', imageError:'This image could not be loaded.', imageLoading:'Loading image…'
+  skip:'Skip to our work', navigation:'Portfolio', videos:'Videos', games:'Games', tools:'Tools', about:'About', welcome:'The clubroom is open', subtitle:'A little room for the things we make.', invitation:'Take a look around.\nPick a corner. See what we’re working on.', roomTitle:'Our corner of Millennium', simpleView:'Simple view', roomView:'Room view', prototype:'Local prototype', areas:'Clubroom areas', roomAlt:'Game Development Department room illustration, with shelves of games and equipment, a central television, consoles on the floor, and a whiteboard.', simpleTitle:'Same club. A simpler view.', simpleBody:'Artwork unavailable. Use the navigation to explore our work.', screening:'Screening corner', gaming:'One more round?', workbench:'Equipment shelf', noticeboard:'Club noticeboard', toolsLong:'Tools & open source', aboutLong:'About & contact', roomCaption:'Make something. Leave the snacks.', hint:'Choose an area in the room, or use the navigation above.', fixedView:'Room art: Blue Archive', videosIntro:'Pull up a seat. Find our published videos on these channels.', gamesIntro:'The gaming corner is ready for our game projects.', gamesEmpty:'Development placeholder. No game projects have been added to this prototype.', toolsIntro:'Explore our public repositories. Individual project entries can be added here later.', toolsEmpty:'No individual tool projects have been added to this prototype.', aboutIntro:'A shared home for our videos, games, tools, and experiments.', findUs:'Find us', contact:'Contact', contactBody:'Reach us through the social profiles above. A dedicated contact address has not been supplied.', unofficial:'An independent club homepage inspired by Blue Archive. Not affiliated with or endorsed by its rights holders.', currentHome:'Current homepage', footerNote:'A small room. Plenty of ideas.', clubPortfolio:'Club portfolio', close:'Close panel', returnRoom:'Back to the clubroom', escape:'Esc to close', newTab:'opens in a new tab', openProject:'open project in a new tab', gamesEmptyPublished:'No published game entries yet.', scene:'Millennium Robotics Lab clubroom', projectLink:'Explore project', development:'Development placeholder', media:'Load project image', imageError:'This image could not be loaded.', imageLoading:'Loading image…'
  },
  zh: {
-  skip:'跳到作品', navigation:'作品导航', videos:'视频', games:'游戏', tools:'工具', about:'关于', welcome:'部室开放中', subtitle:'一间小小的部室，放下我们做的东西。', invitation:'四处看看。\n选一个角落，看看我们在做什么。', roomTitle:'千禧年的一角', simpleView:'简洁视图', roomView:'部室视图', prototype:'本地原型', areas:'部室分区', roomAlt:'游戏开发部的部室插画：摆满游戏与设备的书架、中央电视、地板上的游戏机，以及白板。', simpleTitle:'同一个社团，更简洁的视图。', simpleBody:'插画加载失败。请通过导航查看作品。', screening:'放映角', gaming:'再来一局？', workbench:'设备架', noticeboard:'社团告示板', toolsLong:'工具与开源项目', aboutLong:'关于与联系', roomCaption:'做点东西，记得留些零食。', hint:'选择部室分区，或使用上方导航。', fixedView:'部室插画：《蔚蓝档案》', videosIntro:'找个位置坐下。在这些平台查看我们发布的视频。', gamesIntro:'游戏角已为我们的游戏项目留好位置。', gamesEmpty:'开发占位内容。此原型尚未添加游戏项目。', toolsIntro:'浏览我们的公开仓库。之后可以在此添加具体项目。', toolsEmpty:'此原型尚未添加具体工具项目。', aboutIntro:'这里放着我们的视频、游戏、工具和实验。', findUs:'找到我们', contact:'联系', contactBody:'请通过上方社交平台联系。暂未提供专用联系地址。', unofficial:'受《蔚蓝档案》启发的独立社团主页。与其权利人无隶属关系，亦未获其背书。', currentHome:'现有主页', footerNote:'部室虽小，想法很多。', clubPortfolio:'社团作品', close:'关闭面板', returnRoom:'返回部室', escape:'按 Esc 关闭', newTab:'在新标签页打开', projectLink:'查看项目', development:'开发占位内容', media:'加载项目图片', imageError:'图片加载失败。', imageLoading:'正在加载图片…'
+  skip:'跳到作品', navigation:'作品导航', videos:'视频', games:'游戏', tools:'工具', about:'关于', welcome:'部室开放中', subtitle:'一间小小的部室，放下我们做的东西。', invitation:'四处看看。\n选一个角落，看看我们在做什么。', roomTitle:'千禧年的一角', simpleView:'简洁视图', roomView:'部室视图', prototype:'本地原型', areas:'部室分区', roomAlt:'游戏开发部的部室插画：摆满游戏与设备的书架、中央电视、地板上的游戏机，以及白板。', simpleTitle:'同一个社团，更简洁的视图。', simpleBody:'插画加载失败。请通过导航查看作品。', screening:'放映角', gaming:'再来一局？', workbench:'设备架', noticeboard:'社团告示板', toolsLong:'工具与开源项目', aboutLong:'关于与联系', roomCaption:'做点东西，记得留些零食。', hint:'选择部室分区，或使用上方导航。', fixedView:'部室插画：《蔚蓝档案》', videosIntro:'找个位置坐下。在这些平台查看我们发布的视频。', gamesIntro:'游戏角已为我们的游戏项目留好位置。', gamesEmpty:'开发占位内容。此原型尚未添加游戏项目。', toolsIntro:'浏览我们的公开仓库。之后可以在此添加具体项目。', toolsEmpty:'此原型尚未添加具体工具项目。', aboutIntro:'这里放着我们的视频、游戏、工具和实验。', findUs:'找到我们', contact:'联系', contactBody:'请通过上方社交平台联系。暂未提供专用联系地址。', unofficial:'受《蔚蓝档案》启发的独立社团主页。与其权利人无隶属关系，亦未获其背书。', currentHome:'现有主页', footerNote:'部室虽小，想法很多。', clubPortfolio:'社团作品', close:'关闭面板', returnRoom:'返回部室', escape:'按 Esc 关闭', newTab:'在新标签页打开', openProject:'打开作品，在新标签页打开', gamesEmptyPublished:'这里还没有已发布的游戏条目。', scene:'千禧年机器人部的部室', projectLink:'查看项目', development:'开发占位内容', media:'加载项目图片', imageError:'图片加载失败。', imageLoading:'正在加载图片…'
+ },
+ ja: {
+  skip: '作品へ移動',
+  navigation: '作品一覧',
+  videos: '動画',
+  games: 'ゲーム',
+  tools: 'ツール',
+  about: 'この部について',
+  welcome: '部室へようこそ',
+  subtitle: '私たちが作ったものを置く、小さな部室。',
+  invitation: '部室を見て回ってください。\n気になる場所で、私たちの活動をのぞいてみてください。',
+  roomTitle: 'ミレニアムの片隅',
+  simpleView: 'シンプル表示',
+  roomView: '部室表示',
+  prototype: 'ローカル試作版',
+  areas: '部室の各エリア',
+  roomAlt: 'ゲーム開発部の部室のイラスト。ゲームや機材が並ぶ棚、中央のテレビ、床に置かれたゲーム機、ホワイトボード。',
+  simpleTitle: 'いつもの部室を、シンプルに。',
+  simpleBody: 'イラストを読み込めませんでした。ナビゲーションから作品をご覧ください。',
+  screening: '上映コーナー',
+  gaming: 'もう一回遊ぶ？',
+  workbench: '機材棚',
+  noticeboard: '部の掲示板',
+  toolsLong: 'ツールとオープンソース',
+  aboutLong: 'この部について・連絡先',
+  roomCaption: '何か作ろう。お菓子も残してね。',
+  hint: '部室のエリアを選ぶか、ナビゲーションをご利用ください。',
+  fixedView: '部室イラスト：ブルーアーカイブ',
+  videosIntro: 'どうぞお座りください。公開した動画はこちらのチャンネルから。',
+  gamesIntro: 'ゲームコーナーには、私たちのゲームを置く予定です。',
+  gamesEmpty: '開発用の仮表示です。この試作版にはゲーム作品をまだ追加していません。',
+  toolsIntro: '公開リポジトリをご覧ください。個別のプロジェクトは今後追加できます。',
+  toolsEmpty: 'この試作版にはツールの個別プロジェクトをまだ追加していません。',
+  aboutIntro: '動画、ゲーム、ツール、実験を集めた場所です。',
+  findUs: '公式アカウント',
+  contact: '連絡先',
+  contactBody: '上記のアカウントからご連絡ください。専用の連絡先はまだありません。',
+  unofficial: 'ブルーアーカイブに着想を得た自主制作の部活動ホームページです。権利者との提携関係はなく、公認も受けていません。',
+  currentHome: '現在のホームページ',
+  footerNote: '小さな部室に、たくさんのアイデア。',
+  clubPortfolio: '部の作品一覧',
+  close: 'パネルを閉じる',
+  returnRoom: '部室に戻る',
+  escape: 'Esc で閉じる',
+  newTab: '新しいタブで開く',
+  projectLink: '作品を見る',
+  development: '開発用の仮表示',
+  media: '作品の画像を読み込む',
+  imageError: '画像を読み込めませんでした。',
+  imageLoading: '画像を読み込み中…',
+  openProject: '作品を新しいタブで開く',
+  gamesEmptyPublished: '公開済みのゲームはまだありません。',
+  scene: 'ミレニアムロボット部の部室'
  }
 };

@@ -9,6 +9,14 @@
    back: 'Back to the clubroom',
    descriptions: ['Videos', 'Videos', 'Posts & updates', 'Public repositories']
   },
+  ja: {
+   title: 'この部について',
+   credits: 'クレジット', cursorCredit: 'アリスのカーソルイラスト：ben404。許可を得て使用しています。',
+   profiles: '公式アカウント', newTab: '新しいタブで開く',
+   note: 'ブルーアーカイブに着想を得た自主制作のホームページです。MRL は権利者との提携関係はなく、公認も受けていません。',
+   back: '部室に戻る',
+   descriptions: ['動画', '動画', '投稿とお知らせ', '公開リポジトリ']
+  },
   zh: {
    title: '关于',
    credits: '鸣谢', cursorCredit: '爱丽丝鼠标指针：ben404。已获授权使用。',
@@ -39,8 +47,8 @@
    const brand = element('p', '', 'about-brand');
    const english = element('span', 'Millennium Robotics Lab');
    english.lang = 'en';
-   const chinese = element('span', '千禧年机器人部', 'about-brand-secondary');
-   chinese.lang = 'zh-Hans';
+   const chinese = element('span', language === 'ja' ? 'ミレニアムロボット部' : '千禧年机器人部', 'about-brand-secondary');
+   chinese.lang = language === 'ja' ? 'ja' : 'zh-Hans';
    brand.append(english, chinese, element('span', 'MRL', 'about-brand-short'));
    const heading = element('h3', t.profiles);
    heading.id = 'about-profiles-title';

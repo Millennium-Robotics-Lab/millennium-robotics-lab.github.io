@@ -2,12 +2,12 @@
 <html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
-<script>(()=>{try{const language=localStorage.getItem('mrl-language')==='zh'?'zh':'en';document.documentElement.lang=language==='zh'?'zh-Hans':'en';document.documentElement.dataset.lang=language;}catch{}})();</script>
+<script src="language.js?v=20261118-ja-1"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script src="device-routing.js?v=20261109-1" data-page="original"></script>
 <script src="cursor.js?v=20261118-arisu-animated-48" defer></script>
-<script src="link-policy.js?v=20261117-language-1" defer></script>
-<script src="original.js?v=20261117-language-1" defer></script>
+<script src="link-policy.js?v=20261118-ja-1" defer></script>
+<script src="original.js?v=20261118-ja-1" defer></script>
 <title>Millennium Robotics Lab // 千禧年机器人部</title>
 <meta name="description" content="Millennium Robotics Lab / 千禧年机器人部. YouTube, Bilibili, X and GitHub.">
 <meta name="theme-color" content="#05080f">
@@ -57,7 +57,7 @@ h1 span{color:var(--accent)}
 .sub{margin:8px 0 0;color:var(--muted);font-size:17px;letter-spacing:2px}
 
 [hidden]{display:none!important}
-html[lang^="zh"] a[data-language="en"],html[lang="en"] a[data-language="zh"]{display:none!important}
+html[lang^="zh"] a[data-language="en"],html:not([lang^="zh"]) a[data-language="zh"]{display:none!important}
 .language-toggle{position:fixed;top:16px;right:16px;z-index:55;min-height:44px;padding:8px 12px;font:18px var(--dot);color:var(--accent);background:var(--panel);border:1px solid var(--accent-dim);cursor:pointer}
 .links{display:grid;gap:16px;margin:30px 0 0}
 .btn{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--bg);background:var(--accent);

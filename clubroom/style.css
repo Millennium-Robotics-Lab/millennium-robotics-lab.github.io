@@ -139,4 +139,4 @@ dialog { transform-origin: center; }
 .reduced-motion .hotspot::before, .reduced-motion .hotspot::after, .reduced-motion .hotspot-label { transition: none !important; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
 
-html[lang^="zh"] a[data-language="en"], html[lang="en"] a[data-language="zh"] { display: none !important; }
+html[lang^="zh"] a[data-language="en"], html:not([lang^="zh"]) a[data-language="zh"] { display: none !important; }

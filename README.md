@@ -14,9 +14,10 @@ Mobile devices use the original link page at `/`. Desktop devices are redirected
 
 - `index.html`: original mobile homepage and channel links.
 - `device-routing.js`: mobile/desktop selection.
+- `language.js`: shared language selection and saved preference (English → 中文 → 日本語).
 - `clubroom/index.html`, `style.css`, `app.js`: desktop artwork, furniture controls, and centered panels.
 - `clubroom/portfolio.js`: verified platform links and project data.
-- `clubroom/copy.js`: English and Simplified Chinese copy.
+- `clubroom/copy.js`: English, Simplified Chinese, and Japanese copy.
 - `clubroom/assets/`: only the optimized artwork and small MRL icon required by the website.
 
 The desktop Tools control is on the middle shelf. Furniture labels and hover areas have transparent backgrounds. Individual project arrays remain empty until real entries are supplied.
