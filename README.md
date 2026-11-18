@@ -23,7 +23,8 @@ The desktop Tools control is on the middle shelf. Furniture labels and hover are
 
 ## Check locally
 
-Both pages load `cursor.css` for static Arisu cursors with mouse input.
+Both pages load `cursor.css` and `cursor.js` for animated 48-pixel Arisu cursors
+with mouse input. Reduced-motion mode uses static cursors.
 See `assets/cursors/README.md` for the source, click positions, and replacement
 instructions. The About page credits ben404 for the cursor artwork.
 
